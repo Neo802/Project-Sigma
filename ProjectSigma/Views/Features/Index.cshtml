@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ProjectRunAway.Models.Features>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Headted_seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ventilated_seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Steering_wheel_heating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Material_of_the_seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Navigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HorsePower)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cilindrical_capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadLights)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type_seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Virtual_cockpit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sunroof)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cars)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headted_seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ventilated_seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Steering_wheel_heating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_of_the_seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Navigation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorsePower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cilindrical_capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadLights)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type_seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Virtual_cockpit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sunroof)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cars.CarsId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FeaturesId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FeaturesId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FeaturesId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
