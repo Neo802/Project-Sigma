@@ -8,6 +8,6 @@
         public string? Price_liability { get; set; }
         public string? About { get; set; }
         public int CarsId { get; set; }
-        public Cars? Cars { get; set; }
+        public Cars? Cars { get; set; } // Masina
     }
 }
