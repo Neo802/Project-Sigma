@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectRunAway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7fb7e84d37517024bb68f7cd1766ab0b4a7c4df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ade2ae0fc12db8967a1031cc045a603fd1f5bee")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectRunAway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectRunAway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
