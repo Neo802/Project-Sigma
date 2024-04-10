@@ -15,12 +15,39 @@
 
 <body>
     <!--preloader-->
-    <!-- Preloader will be implemented here! -->
+  
     <!--header-->
     
+    <header>
+     
+    </header>
+    
     <!--login-->
-    <!-- To be implemented! -->
+        <div class="wrapper-login">
+            <form action="/login" method="POST" id="login-form">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Username">
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" id="password">
+                    <i class="fa-solid fa-eye" id="show-password"></i>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Forgot password</a>
+                </div>
+                <button type="submit" class="btn">Sign in</button>
+                <div class="register-link">
+                    <p>Don't have an account?
+                        <a href="createAccountPage.html">Register now</a>
+                    </p>
+                </div>
+            </form>
+        </div>
     <!--javascript-->
+    <script src="javascript/app_login_create_Account.js"></script>
 </body>
 
 </html>
