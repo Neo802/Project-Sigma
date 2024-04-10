@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore ProjectSigma/ProjectRunAway.sln
+      run: dotnet restore Backend/ProjectRunAway.sln
     - name: Build
-      run: dotnet build --no-restore ProjectSigma/ProjectRunAway.sln
+      run: dotnet build --no-restore Backend/ProjectRunAway.sln
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
