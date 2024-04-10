@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent a car</title>
+    <link rel="stylesheet" href="styles/style_login&create_Account.css">
+    <!--icons style links-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'>
+</head>
+
+
+<body>
+    <!--preloader-->
+    
+    <div class="preloader">
+        <img src="images/Gear.gif" alt="preloader" />
+    </div>
+    <!--header-->
+    
+    <header>
+        <video class="video-container" muted autoplay loop>
+            <source src="videos/video_logare.mp4" type="video/mp4" />
+    </video>
+    </header>
+    
+    <!--login-->
+        <div class="wrapper-login">
+            <form action="/login" method="POST" id="login-form">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" id="password">
+                    <i class="fa-solid fa-eye" id="show-password"></i>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="resetPage.html">Forgot password</a>
+                </div>
+                <button type="submit-signin" class="btn">Sign in</button>
+                <div class="register-link">
+                    <p>Don't have an account?
+                        <a href="createAccountPage.html">Register now</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    <!--javascript-->
+    <script src="javascript/app_login_create_Account.js"></script>
+</body>
+
+</html>
