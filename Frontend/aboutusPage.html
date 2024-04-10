@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     <!-- styles -->
     <link rel="stylesheet" href="styles/style_general.css" />
-    <link rel="stylesheet" href="styles/style_aboutus.css" />
+    <link rel="stylesheet" type = "text/css" href="styles/style_aboutus.css" />
   </head>
   <body>
     <!--preloader-->
@@ -56,8 +56,31 @@
         </ul>
       </div>
     </nav>
+  
   <!-- Abous us section -->
-  <!-- To be implemented! -->
+  <section class="about" id="about">
+    <div class="heading">
+      <span><p>About us</p></span>
+      <h1>Best Customer Experience</h1>
+    </div>
+    <div class="about-container">
+      <div class="about-img">
+        <img src="images/logo.png" alt="can not access logo.png" class="photo">
+      </div>
+      <div class="about-text">
+        <span>About us</span>
+        <p>&nbsp&nbsp&nbspRunAway Car Rentals is the premier destination for those seeking reliable and convenient rental vehicles. Our comprehensive fleet boasts a wide array of cars, from compact and fuel-efficient models to spacious SUVs and luxury vehicles. Whether you're planning a quick weekend getaway, a family vacation, or a business trip, we have the perfect vehicle to suit your needs. 
+        </p>
+        <p id="hide">&nbsp&nbsp&nbspAt RunAway, we prioritize customer satisfaction above all else. Our dedicated team is committed to providing exceptional service, ensuring a seamless rental experience from start to finish. We understand that every journey is unique, which is why we offer personalized assistance to help you select the ideal vehicle for your specific requirements.
+                    <br>
+                    &nbsp&nbsp&nbspConvenience is key at RunAway Car Rentals. With multiple locations conveniently situated throughout the area, picking up and returning your rental vehicle is hassle-free. Our online booking platform allows for easy reservation management, giving you the flexibility to plan your trip on your terms.
+        </p>
+        <button class="btn" id="switch-text" onclick="showHide()">Read more</button>
+      </div>
+    </div>
+  </section>
   <!-- javascript -->
+  <script src="javascript/app_aboutus.js"></script>
+
   </body>
 </html>
