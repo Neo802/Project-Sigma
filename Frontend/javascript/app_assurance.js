@@ -1,0 +1,2 @@
+/*JavaScript for assurance page*/ 
+

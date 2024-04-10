@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Style for aboutus page*/
+
+.about-container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  margin-top: 2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.about-img img{
+  width: 100%;
+  padding-left: 5rem;
+}
+.about-text span{
+  font-weight: 500;
+  color: rgba(255, 0, 0, 0.456);
+  text-transform: uppercase;
+}
+.heading p,h1{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.heading p{
+  font-size: 2rem;
+}
+#hide{
+  display: none;
+}
+.about-container .about-text .btn{
+  background-color: rgba(255, 0, 0, 0.456);
+  padding: 10px 8px;
+  border-radius: 0.7rem;
+  flex: 2 2 7rem;
+}
+.about-container .about-text .btn:hover{
+  background-color: red;
+}
+
