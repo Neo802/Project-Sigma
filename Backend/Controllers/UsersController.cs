@@ -98,7 +98,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsersId,Username,Password,Personal_question,Personal_answer,Address")] Users users)
+        public async Task<IActionResult> Create([Bind("UsersId,Username,Password,PersonalQuestion,PersonalAnswer,Address")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -130,7 +130,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsersId,Username,Password,Personal_question,Personal_answer,Address")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("UsersId,Username,Password,PersonalQuestion,PersonalAnswer,Address")] Users users)
         {
             if (id != users.UsersId)
             {

@@ -1,53 +1,104 @@
-﻿@model IEnumerable<ProjectRunAway.Models.Liability>
+@model IEnumerable<ProjectRunAway.Models.Liability>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Liabilities";
+    Layout = null;
 }
 
-<h1>Index</h1>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RunAway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <!-- styles -->
+    <link rel="stylesheet" href="~/css/style_general.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style_assurance.css" />
+  </head>
+  <body>
+    <!--preloader-->
+    <!-- Preloader will be implemented here! -->
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PriceLiability)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.About)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cars)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceLiability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.About)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cars.CarsId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LiabilityId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LiabilityId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LiabilityId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <nav>
+      <div class="nav-center">
+        <!-- nav header -->
+        <div class="nav-header">
+          <img src="images/logo.png" class="logo" alt="Logo here"/>
+          <button class="nav-toggle">
+            <i class="fa fa-bars" style="font-size:36px"></i>
+            <!--a type for menu bar-->
+          </button>
+        </div>
+        <!-- links -->
+        <ul class="links">
+          <li>
+            <a href="homePage.html">Home</a>
+          </li>
+          <li>
+            <a href="carsPage.html">Cars</a>
+          </li>
+          <li>
+            <a href="locationPage.html">Locations</a>
+          </li>
+          <li>
+            <a href="loginPage.html">Log in</a>
+          </li>
+          <li>
+            <a href="aboutusPage.html">About us</a>
+          </li>
+        </ul>
+        <!-- social media -->
+        <ul class="social-icons">
+          <li>
+            <a href="https://www.twitter.com">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- List of assurance section -->
+    <div class="heading">
+        <span><p>No stress while driving?</p></span>
+        <h1>Can you try our assurance</h1>
+        <p class="paragraph">Limits your financial liability for accidental damage to the rental vehicle</p>
+    </div>
+
+
+
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <div class="section-center">
+                        <article class="menu-item">
+
+                            <div class="item-info">
+                                <header>
+                                    <h3><a href>@item.Category</a></h3>
+                                    <h3>@item.PriceLiability $</h3>
+                                </header>
+                                <p class="paragraph">
+                                    @item.About
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- javascript -->
+
+  </body>
+</html>

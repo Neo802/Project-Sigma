@@ -19,10 +19,16 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int carsId)
         {
-            var tableContext = _context.Liability.Include(l => l.Cars);
-            return View(await tableContext.ToListAsync());
+            IQueryable<Liability> query = _context.Liability.Include(l => l.Cars);
+
+            if (carsId != 0)
+            {
+                query = query.Where(l => l.Cars.CarsId == carsId);
+            }
+
+            return View(await query.ToListAsync());
         }
 
         // GET: Liabilities/Details/5

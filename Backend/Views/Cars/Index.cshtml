@@ -130,6 +130,7 @@
                     <td>@item.Type</td>
                     <td>@item.Seats</td>
                     <td>@item.Users.Username</td>
+                    <td><a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })">Assurances</a></td>
                 </tr>
             }
         </tbody>
