@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectRunAway.Models;
 
@@ -11,9 +12,11 @@ using ProjectRunAway.Models;
 namespace ProjectRunAway.Migrations
 {
     [DbContext(typeof(TableContext))]
-    partial class TableContextModelSnapshot : ModelSnapshot
+    [Migration("20240416190516_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace ProjectRunAway.Migrations
                     b.Property<int>("LocationsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("BusyCar")
+                    b.Property<string>("Busy_car")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateOnly?>("DateEnd")
