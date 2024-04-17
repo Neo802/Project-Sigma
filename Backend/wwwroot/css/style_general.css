@@ -26,11 +26,11 @@
   visibility: hidden;
 }
 body {
-  font-family: 'Open Sans', sans-serif;
-  background: rgba(137, 137, 137, 0.84);
-  color: black;
-  line-height: 1.5;
-  font-size: 1.875rem;
+    font-family: 'Open Sans', sans-serif;
+    background: rgba(137, 137, 137, 0.84);
+    color: black;
+    line-height: 1.5;
+    font-size: 1.875rem;
 }
 ul {
   list-style-type: none;
@@ -140,7 +140,7 @@ nav {
   color: rgba(255, 0, 0, 0.456);
   font-size: 1rem;
   text-transform: capitalize;
-  letter-spacing: 0.1rem;;
+  letter-spacing: 0.1rem;
   display: block;
   padding: 0.5rem 1rem;
   transition: all 0.3s linear;
