@@ -12,8 +12,8 @@ using ProjectRunAway.Models;
 namespace ProjectRunAway.Migrations
 {
     [DbContext(typeof(TableContext))]
-    [Migration("20240401145459_erew12")]
-    partial class erew12
+    [Migration("20240417084244_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,19 +33,19 @@ namespace ProjectRunAway.Migrations
                     b.Property<int>("LocationsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Busy_car")
+                    b.Property<string>("BusyCar")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly?>("Date_end")
+                    b.Property<DateOnly?>("DateEnd")
                         .HasColumnType("date");
 
-                    b.Property<DateOnly?>("Date_start")
+                    b.Property<DateOnly?>("DateStart")
                         .HasColumnType("date");
 
-                    b.Property<TimeSpan?>("From_hour")
+                    b.Property<TimeSpan?>("FromHour")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("To_hour")
+                    b.Property<TimeSpan?>("ToHour")
                         .HasColumnType("time");
 
                     b.HasKey("CarsId", "LocationsId");
@@ -81,13 +81,13 @@ namespace ProjectRunAway.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("Price_car")
+                    b.Property<float?>("PriceCar")
                         .HasColumnType("real");
 
                     b.Property<string>("Seats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("Tank_capacity")
+                    b.Property<float?>("TankCapacity")
                         .HasColumnType("real");
 
                     b.Property<string>("Type")
@@ -117,37 +117,37 @@ namespace ProjectRunAway.Migrations
                     b.Property<int>("CarsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Cilindrical_capacity")
+                    b.Property<string>("CilindricalCapacity")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HeadLights")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Headted_seats")
+                    b.Property<string>("HeadtedSeats")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float?>("HorsePower")
                         .HasColumnType("real");
 
-                    b.Property<string>("Material_of_the_seats")
+                    b.Property<string>("MaterialOfTheSeats")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Navigation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Steering_wheel_heating")
+                    b.Property<string>("SteeringWheelHeating")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Sunroof")
+                    b.Property<string>("SunRoof")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type_seats")
+                    b.Property<string>("TypeSeats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Ventilated_seats")
+                    b.Property<string>("VentilatedSeats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Virtual_cockpit")
+                    b.Property<string>("VirtualCockpit")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FeaturesId");
@@ -174,7 +174,7 @@ namespace ProjectRunAway.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Price_liability")
+                    b.Property<string>("PriceLiability")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("LiabilityId");
@@ -192,7 +192,7 @@ namespace ProjectRunAway.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationsId"));
 
-                    b.Property<int?>("Cars_available")
+                    b.Property<int?>("CarsAvailable")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -217,14 +217,32 @@ namespace ProjectRunAway.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FailedAttemptCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LockoutEnd")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Personal_answer")
+                    b.Property<string>("PersonalAnswer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Personal_question")
+                    b.Property<string>("PersonalQuestion")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Telephone")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");

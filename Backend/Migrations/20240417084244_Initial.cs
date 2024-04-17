@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectRunAway.Migrations
 {
     /// <inheritdoc />
-    public partial class erew12 : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace ProjectRunAway.Migrations
                     LocationsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cars_available = table.Column<int>(type: "int", nullable: true),
+                    CarsAvailable = table.Column<int>(type: "int", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -34,9 +34,15 @@ namespace ProjectRunAway.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Personal_question = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Personal_answer = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LockoutEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FailedAttemptCount = table.Column<int>(type: "int", nullable: false),
+                    PersonalQuestion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PersonalAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telephone = table.Column<int>(type: "int", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,8 +63,8 @@ namespace ProjectRunAway.Migrations
                     Gear = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Doors = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price_car = table.Column<float>(type: "real", nullable: true),
-                    Tank_capacity = table.Column<float>(type: "real", nullable: true),
+                    PriceCar = table.Column<float>(type: "real", nullable: true),
+                    TankCapacity = table.Column<float>(type: "real", nullable: true),
                     UsersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -78,11 +84,11 @@ namespace ProjectRunAway.Migrations
                 {
                     CarsId = table.Column<int>(type: "int", nullable: false),
                     LocationsId = table.Column<int>(type: "int", nullable: false),
-                    Busy_car = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Date_start = table.Column<DateOnly>(type: "date", nullable: true),
-                    Date_end = table.Column<DateOnly>(type: "date", nullable: true),
-                    From_hour = table.Column<TimeSpan>(type: "time", nullable: true),
-                    To_hour = table.Column<TimeSpan>(type: "time", nullable: true)
+                    BusyCar = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateStart = table.Column<DateOnly>(type: "date", nullable: true),
+                    DateEnd = table.Column<DateOnly>(type: "date", nullable: true),
+                    FromHour = table.Column<TimeSpan>(type: "time", nullable: true),
+                    ToHour = table.Column<TimeSpan>(type: "time", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,17 +114,17 @@ namespace ProjectRunAway.Migrations
                     FeaturesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AC = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Headted_seats = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Ventilated_seats = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Steering_wheel_heating = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Material_of_the_seats = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HeadtedSeats = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VentilatedSeats = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SteeringWheelHeating = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaterialOfTheSeats = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Navigation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HorsePower = table.Column<float>(type: "real", nullable: true),
-                    Cilindrical_capacity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CilindricalCapacity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HeadLights = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type_seats = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Virtual_cockpit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Sunroof = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TypeSeats = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VirtualCockpit = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SunRoof = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CarsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -139,7 +145,7 @@ namespace ProjectRunAway.Migrations
                     LiabilityId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price_liability = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PriceLiability = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     About = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CarsId = table.Column<int>(type: "int", nullable: false)
                 },
