@@ -11,8 +11,8 @@
         public string? Gear { get; set; }
         public string? Type { get; set; }
         public string? Doors { get; set; }
-        public float? Price_car { get; set; }
-        public float? Tank_capacity { get; set; }
+        public float? PriceCar { get; set; }
+        public float? TankCapacity { get; set; }
         public int UsersId { get; set; }
         public Users? Users { get; set; }
         public ICollection<Availability>? Availability { get; set; }

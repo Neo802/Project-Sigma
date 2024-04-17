@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectRunAway.Models;
 
@@ -11,9 +12,11 @@ using ProjectRunAway.Models;
 namespace ProjectRunAway.Migrations
 {
     [DbContext(typeof(TableContext))]
-    partial class TableContextModelSnapshot : ModelSnapshot
+    [Migration("20240416190034_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,19 +33,19 @@ namespace ProjectRunAway.Migrations
                     b.Property<int>("LocationsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("BusyCar")
+                    b.Property<string>("Busy_car")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly?>("DateEnd")
+                    b.Property<DateOnly?>("Date_end")
                         .HasColumnType("date");
 
-                    b.Property<DateOnly?>("DateStart")
+                    b.Property<DateOnly?>("Date_start")
                         .HasColumnType("date");
 
-                    b.Property<TimeSpan?>("FromHour")
+                    b.Property<TimeSpan?>("From_hour")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("ToHour")
+                    b.Property<TimeSpan?>("To_hour")
                         .HasColumnType("time");
 
                     b.HasKey("CarsId", "LocationsId");
@@ -78,13 +81,13 @@ namespace ProjectRunAway.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("PriceCar")
+                    b.Property<float?>("Price_car")
                         .HasColumnType("real");
 
                     b.Property<string>("Seats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("TankCapacity")
+                    b.Property<float?>("Tank_capacity")
                         .HasColumnType("real");
 
                     b.Property<string>("Type")
@@ -114,37 +117,37 @@ namespace ProjectRunAway.Migrations
                     b.Property<int>("CarsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CilindricalCapacity")
+                    b.Property<string>("Cilindrical_capacity")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HeadLights")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("HeadtedSeats")
+                    b.Property<string>("Headted_seats")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float?>("HorsePower")
                         .HasColumnType("real");
 
-                    b.Property<string>("MaterialOfTheSeats")
+                    b.Property<string>("Material_of_the_seats")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Navigation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SteeringWheelHeating")
+                    b.Property<string>("Steering_wheel_heating")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SunRoof")
+                    b.Property<string>("Sunroof")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TypeSeats")
+                    b.Property<string>("Type_seats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("VentilatedSeats")
+                    b.Property<string>("Ventilated_seats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("VirtualCockpit")
+                    b.Property<string>("Virtual_cockpit")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FeaturesId");
@@ -171,7 +174,7 @@ namespace ProjectRunAway.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PriceLiability")
+                    b.Property<string>("Price_liability")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("LiabilityId");
@@ -189,7 +192,7 @@ namespace ProjectRunAway.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationsId"));
 
-                    b.Property<int?>("CarsAvailable")
+                    b.Property<int?>("Cars_available")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
