@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Busy_car)
+                @Html.DisplayNameFor(model => model.BusyCar)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date_start)
+                @Html.DisplayNameFor(model => model.DateStart)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date_end)
+                @Html.DisplayNameFor(model => model.DateEnd)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.From_hour)
+                @Html.DisplayNameFor(model => model.FromHour)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.To_hour)
+                @Html.DisplayNameFor(model => model.ToHour)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cars)
@@ -40,19 +40,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Busy_car)
+                @Html.DisplayFor(modelItem => item.BusyCar)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date_start)
+                @Html.DisplayFor(modelItem => item.DateStart)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date_end)
+                @Html.DisplayFor(modelItem => item.DateEnd)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.From_hour)
+                @Html.DisplayFor(modelItem => item.FromHour)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.To_hour)
+                @Html.DisplayFor(modelItem => item.ToHour)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cars.CarsId)
