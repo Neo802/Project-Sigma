@@ -122,14 +122,44 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Manufacturer</td>
-            <td>@item.Model</td>
-            <td>@item.PriceCar</td>
-            <td>@item.Fuel</td>
-            <td>@item.TankCapacity</td>
-            <td>@item.Type</td>
-            <td>@item.Seats</td>
-            <td>@item.Users.Username</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fuel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price_car)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tank_capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.UsersId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CarsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarsId">Delete</a>
+            </td>
         </tr>
     }
     </tbody>
