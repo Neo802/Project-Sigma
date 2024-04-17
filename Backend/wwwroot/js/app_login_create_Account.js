@@ -4,7 +4,6 @@
 const showPassword = document.querySelector("#show-password");
 const passwordField = document.querySelector("#password");
 
-function togglePasswordVisibility() { 
 showPassword.addEventListener("click", function(){
     
   if(this.classList.contains("fa-eye")){
@@ -22,5 +21,4 @@ showPassword.addEventListener("click", function(){
     passwordField.setAttribute("type", type);
     //set the attribute with new attribute once the user make click
 })
-}
 /*end of show-hide password*/
