@@ -1,65 +1,103 @@
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index";
+    Layout = null;
 }
-
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RunAway</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <!-- styles -->
-    <link rel="stylesheet" href="styles/style_general.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="~/css/style_general.css" />
+    <link rel="stylesheet" href="~/css/style_home.css" />
+</head>
+<body>
     <!--preloader-->
-    <!-- Preloader will be implemented here! -->
+
     <nav>
-      <div class="nav-center">
-        <!-- nav header -->
-        <div class="nav-header">
-          <img src="images/logo.png" class="logo" alt="Logo here"/>
-          <button class="nav-toggle">
-            <i class="fa fa-bars" style="font-size:36px"></i>
-            <!--a type for menu bar-->
-          </button>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="https://www.dropbox.com/scl/fi/53xetjjphcvhirjpcxvml/logo.png?rlkey=su18qkjqsey3k50py8mws78zj&st=3nj4zqxu&dl=1" class="logo" alt="logo can't be accessed" />
+                <button class="nav-toggle">
+                    <i class="fa fa-bars" style="font-size:36px"></i>
+                    <!--a type for menu bar-->
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Cars">Cars</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Locations">Locations</a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Users">Log in</a>
+                </li>
+                <li>
+                    <a href="aboutusPage.html">About us</a>
+                </li>
+            </ul>
+            <!-- social media -->
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-sketch"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- links -->
-        <ul class="links">
-          <li>
-            <a href="homePage.html">Home</a>
-          </li>
-          <li>
-            <a href="carsPage.html">Cars</a>
-          </li>
-          <li>
-            <a href="locationPage.html">Locations</a>
-          </li>
-          <li>
-            <a href="loginPage.html">Log in</a>
-          </li>
-          <li>
-            <a href="aboutusPage.html">About us</a>
-          </li>
-        </ul>
-        <!-- social media -->
-        <ul class="social-icons">
-          <li>
-            <a href="https://www.twitter.com">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
     </nav>
     <!-- Home section -->
-    <!-- To be implemented! -->
-
+    <section class="home" id="home">
+        <div class="text">
+            <h1>Do you <span>need a car</span>?<br> <span>Rent a car</span></h1>
+        </div>
+        <div class="form-container">
+            <form action="">
+                <div class="input-box">
+                    <span><h3>Location</h3></span>
+                    <input type="search" name="" id="" placeholder="Search Places">
+                </div>
+                <div class="input-box">
+                    <span><h3>Pick up Date</h3></span>
+                    <input type="date" name="" id="">
+                </div>
+                <div class="input-box">
+                    <span><h3>Return Date</h3></span>
+                    <input type="date" name="" id="">
+                </div>
+                <input type="submit" name="" id="" class="btn">
+            </form>
+        </div>
+    </section>
     <!-- javascript -->
-  </body>
+    <script src="javascript/app_general.js"></script>
+    <script src="javascript/app_home.js"></script>
+</body>
 </html>

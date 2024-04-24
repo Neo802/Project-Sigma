@@ -6,42 +6,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectRunAway.Models;
+using ProjectRunAway.Services.Interfaces;
 
 namespace ProjectRunAway.Controllers
 {
     public class LiabilitiesController : Controller
     {
-        private readonly TableContext _context;
+        private readonly ILiabilitiesService _liabilityService;
 
-        public LiabilitiesController(TableContext context)
+        public LiabilitiesController(ILiabilitiesService liabilityService)
         {
-            _context = context;
+            _liabilityService = liabilityService;
         }
 
         // GET: Liabilities
-        public async Task<IActionResult> Index(int carsId)
+        public IActionResult Index()
         {
-            IQueryable<Liability> query = _context.Liability.Include(l => l.Cars);
-
-            if (carsId != 0)
-            {
-                query = query.Where(l => l.Cars.CarsId == carsId);
-            }
-
-            return View(await query.ToListAsync());
+            var liability = _liabilityService.GetAllLiabilities();
+            return View(liability);
         }
 
         // GET: Liabilities/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var liability = await _context.Liability
-                .Include(l => l.Cars)
-                .FirstOrDefaultAsync(m => m.LiabilityId == id);
+            var liability = _liabilityService.GetLiabilityById(id.Value);
             if (liability == null)
             {
                 return NotFound();
@@ -53,7 +46,6 @@ namespace ProjectRunAway.Controllers
         // GET: Liabilities/Create
         public IActionResult Create()
         {
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId");
             return View();
         }
 
@@ -62,32 +54,32 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LiabilityId,Category,Price_liability,About,CarsId")] Liability liability)
+        public IActionResult Create([Bind("LiabilityId,Category,PriceLiability,About,CarsId")] Liability liability)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(liability);
-                await _context.SaveChangesAsync();
+                _liabilityService.AddLiability(liability);
+                //_liabilityService.Save();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId", liability.CarsId);
+           
             return View(liability);
         }
 
         // GET: Liabilities/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var liability = await _context.Liability.FindAsync(id);
+            var liability = _liabilityService.EditExisting().FirstOrDefault(m => m.LiabilityId == id);
             if (liability == null)
             {
                 return NotFound();
             }
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId", liability.CarsId);
+            
             return View(liability);
         }
 
@@ -96,7 +88,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LiabilityId,Category,Price_liability,About,CarsId")] Liability liability)
+        public IActionResult Edit(int id, [Bind("LiabilityId,Category,PriceLiability,About,CarsId")] Liability liability)
         {
             if (id != liability.LiabilityId)
             {
@@ -105,39 +97,24 @@ namespace ProjectRunAway.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(liability);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LiabilityExists(liability.LiabilityId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+              
+                _liabilityService.UpdateLiability(liability);
+               // _liabilityService.Save();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId", liability.CarsId);
+            
             return View(liability);
         }
 
         // GET: Liabilities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var liability = await _context.Liability
-                .Include(l => l.Cars)
-                .FirstOrDefaultAsync(m => m.LiabilityId == id);
+            var liability = _liabilityService.GetLiabilityById(id.Value);
             if (liability == null)
             {
                 return NotFound();
@@ -149,21 +126,15 @@ namespace ProjectRunAway.Controllers
         // POST: Liabilities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var liability = await _context.Liability.FindAsync(id);
+            var liability = _liabilityService.GetLiabilityById(id);
             if (liability != null)
             {
-                _context.Liability.Remove(liability);
+                _liabilityService.DeleteLiability(liability);
+               // _liabilityService.Save();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool LiabilityExists(int id)
-        {
-            return _context.Liability.Any(e => e.LiabilityId == id);
         }
     }
 }

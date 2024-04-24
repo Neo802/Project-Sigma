@@ -6,34 +6,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectRunAway.Models;
+using ProjectRunAway.Services.Interfaces;
 
 namespace ProjectRunAway.Controllers
 {
     public class LocationsController : Controller
     {
-        private readonly TableContext _context;
+        private readonly ILocationService _locationService;
 
-        public LocationsController(TableContext context)
+        public LocationsController(ILocationService locationService)
         {
-            _context = context;
+            _locationService = locationService;
         }
 
         // GET: Locations
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Locations.ToListAsync());
+            var locations = _locationService.GetAllLocations();
+            return View(locations);
         }
 
         // GET: Locations/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var locations = await _context.Locations
-                .FirstOrDefaultAsync(m => m.LocationsId == id);
+            var locations = _locationService.GetLocationById(id.Value);
+                
             if (locations == null)
             {
                 return NotFound();
@@ -48,17 +50,25 @@ namespace ProjectRunAway.Controllers
             return View();
         }
 
+        // GET: Locations/AdminLocation
+        public ActionResult AdminLocation()
+        {
+            var locations = _locationService.GetAllLocations();
+            return View(locations);
+        }
+
+
         // POST: Locations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationsId,City,Cars_available,Description")] Locations locations)
+        public IActionResult Create([Bind("LocationsId,City,CarsAvailable,Description")] Locations locations)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(locations);
-                await _context.SaveChangesAsync();
+                _locationService.AddLocation(locations);
+                _locationService.Save();
                 return RedirectToAction(nameof(Index));
             }
             return View(locations);
@@ -72,7 +82,7 @@ namespace ProjectRunAway.Controllers
                 return NotFound();
             }
 
-            var locations = await _context.Locations.FindAsync(id);
+            var locations = _locationService.EditExisting().FirstOrDefault(m => m.LocationsId == id);
             if (locations == null)
             {
                 return NotFound();
@@ -85,7 +95,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LocationsId,City,Cars_available,Description")] Locations locations)
+        public IActionResult Edit(int id, [Bind("LocationsId,City,CarsAvailable,Description")] Locations locations)
         {
             if (id != locations.LocationsId)
             {
@@ -94,37 +104,24 @@ namespace ProjectRunAway.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(locations);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LocationsExists(locations.LocationsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                 
+                    _locationService.UpdateLocation(locations);
+                    _locationService.Save();
+                    return RedirectToAction(nameof(Index));
             }
             return View(locations);
         }
 
         // GET: Locations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var locations = await _context.Locations
-                .FirstOrDefaultAsync(m => m.LocationsId == id);
+            var locations = _locationService.GetLocationById(id.Value);
+               
             if (locations == null)
             {
                 return NotFound();
@@ -136,21 +133,16 @@ namespace ProjectRunAway.Controllers
         // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public  IActionResult DeleteConfirmed(int id)
         {
-            var locations = await _context.Locations.FindAsync(id);
+            var locations = _locationService.GetLocationById(id);
             if (locations != null)
             {
-                _context.Locations.Remove(locations);
+                _locationService.DeleteLocation(locations);
+                _locationService.Save();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool LocationsExists(int id)
-        {
-            return _context.Locations.Any(e => e.LocationsId == id);
         }
     }
 }

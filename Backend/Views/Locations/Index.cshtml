@@ -2,46 +2,105 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h1>Index</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RunAway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="~/css/style_general.css" />
+    <link rel="stylesheet" href="~/css/style_location.css" />
+</head>
+<body>
+    <!--preloader-->
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CarsAvailable)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarsAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LocationsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LocationsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LocationsId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="https://www.dropbox.com/scl/fi/53xetjjphcvhirjpcxvml/logo.png?rlkey=su18qkjqsey3k50py8mws78zj&st=3nj4zqxu&dl=1" class="logo" alt="logo can't be accessed" />
+                <button class="nav-toggle">
+                    <i class="fa fa-bars" style="font-size:36px"></i>
+                    <!--a type for menu bar-->
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Cars">Cars</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Locations">Locations</a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Users">Log in</a>
+                </li>
+                <li>
+                    <a href="aboutusPage.html">About us</a>
+                </li>
+            </ul>
+            <!-- social media -->
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-sketch"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- List of locations section -->
+    <section class="services" id="services">
+        <div class="heading">
+            <span><p>Big Cities</p></span>
+            <h1>See our location</h1>
+        </div>
+        <div class="services-container">
+            @foreach (var item in Model)
+            {
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://www.dropbox.com/scl/fi/slnhoydwlpz6myqkbykl7/craiova.png?rlkey=xlxl3dhvbuf1cgzqnmmn2cb7d&st=eby0rxrn&dl=1" alt="can not accessed car5.jpg">
+                </div>
+                    <p>Cars: @Html.DisplayFor(modelItem => item.CarsAvailable)</p>
+                    <h3>@Html.DisplayFor(modelItem => item.City)</h3>
+                    <a href="#" class="btn">View cars here</a>
+            </div>
+              }
+        </div>
+    </section>
+    <!-- javascript -->
+    <script src="~/js/app_general.js"></script>
+    <script src="~/js/app_location.js"></script>
+</body>
+</html>
+
+
+
