@@ -6,36 +6,34 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectRunAway.Models;
+using ProjectRunAway.Services.Interfaces;
 
 namespace ProjectRunAway.Controllers
 {
     public class FeaturesController : Controller
     {
-        private readonly TableContext _context;
+        private readonly IFeaturesService _featuresService;
 
-        public FeaturesController(TableContext context)
+        public FeaturesController(IFeaturesService featuresService)
         {
-            _context = context;
+            _featuresService = featuresService;
         }
-
         // GET: Features
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var tableContext = _context.Features.Include(f => f.Cars);
-            return View(await tableContext.ToListAsync());
+            var features = _featuresService.GetAllFeatures();
+            return View(features);
         }
 
         // GET: Features/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var features = await _context.Features
-                .Include(f => f.Cars)
-                .FirstOrDefaultAsync(m => m.FeaturesId == id);
+            var features = _featuresService.GetFeatureById(id.Value);
             if (features == null)
             {
                 return NotFound();
@@ -46,8 +44,7 @@ namespace ProjectRunAway.Controllers
 
         // GET: Features/Create
         public IActionResult Create()
-        {
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId");
+        { 
             return View();
         }
 
@@ -56,32 +53,29 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FeaturesId,AC,Headted_seats,Ventilated_seats,Steering_wheel_heating,Material_of_the_seats,Navigation,HorsePower,Cilindrical_capacity,HeadLights,Type_seats,Virtual_cockpit,Sunroof,CarsId")] Features features)
+        public IActionResult Create([Bind("FeaturesId,AC,HeadtedSeats,VentilatedSeats,SteeringWheelHeating,MaterialOfTheSeats,Navigation,HorsePower,CilindricalCapacity,HeadLights,TypeSeats,VirtualCockpit,SunRoof,CarsId")] Features features)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(features);
-                await _context.SaveChangesAsync();
+                _featuresService.AddFeature(features);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId", features.CarsId);
             return View(features);
         }
 
         // GET: Features/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var features = await _context.Features.FindAsync(id);
+            var features = _featuresService.EditExisting().FirstOrDefault(m => m.FeaturesId == id);
             if (features == null)
             {
                 return NotFound();
             }
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId", features.CarsId);
             return View(features);
         }
 
@@ -90,7 +84,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FeaturesId,AC,Headted_seats,Ventilated_seats,Steering_wheel_heating,Material_of_the_seats,Navigation,HorsePower,Cilindrical_capacity,HeadLights,Type_seats,Virtual_cockpit,Sunroof,CarsId")] Features features)
+        public async Task<IActionResult> Edit(int id, [Bind("FeaturesId,AC,HeadtedSeats,VentilatedSeats,SteeringWheelHeating,MaterialOfTheSeats,Navigation,HorsePower,CilindricalCapacity,HeadLights,TypeSeats,VirtualCockpit,SunRoof,CarsId")] Features features)
         {
             if (id != features.FeaturesId)
             {
@@ -99,39 +93,23 @@ namespace ProjectRunAway.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(features);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FeaturesExists(features.FeaturesId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                    _featuresService.UpdateFeature(features);
+                    return RedirectToAction(nameof(Index));
             }
-            ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId", features.CarsId);
+          
             return View(features);
         }
 
         // GET: Features/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var features = await _context.Features
-                .Include(f => f.Cars)
-                .FirstOrDefaultAsync(m => m.FeaturesId == id);
+            var features = _featuresService.GetFeatureById(id.Value);
             if (features == null)
             {
                 return NotFound();
@@ -143,21 +121,16 @@ namespace ProjectRunAway.Controllers
         // POST: Features/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var features = await _context.Features.FindAsync(id);
+            var features = _featuresService.GetFeatureById(id);
             if (features != null)
             {
-                _context.Features.Remove(features);
+                _featuresService.DeleteFeature(features);
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FeaturesExists(int id)
-        {
-            return _context.Features.Any(e => e.FeaturesId == id);
-        }
     }
 }

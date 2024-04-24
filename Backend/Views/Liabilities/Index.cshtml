@@ -1,66 +1,57 @@
 @model IEnumerable<ProjectRunAway.Models.Liability>
 
 @{
-    ViewData["Title"] = "Liabilities";
+    ViewData["Title"] = "Index";
     Layout = null;
 }
-
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RunAway</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
-    <!-- styles -->
-    <link rel="stylesheet" href="~/css/style_general.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/style_assurance.css" />
-  </head>
-  <body>
+<link rel="stylesheet" href="~/css/style_general.css" />
+<link rel="stylesheet" href="~/css/style_assurance.css" />
+<body>
     <!--preloader-->
     <!-- Preloader will be implemented here! -->
 
     <nav>
-      <div class="nav-center">
-        <!-- nav header -->
-        <div class="nav-header">
-          <img src="images/logo.png" class="logo" alt="Logo here"/>
-          <button class="nav-toggle">
-            <i class="fa fa-bars" style="font-size:36px"></i>
-            <!--a type for menu bar-->
-          </button>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="https://www.dropbox.com/scl/fi/53xetjjphcvhirjpcxvml/logo.png?rlkey=su18qkjqsey3k50py8mws78zj&st=3nj4zqxu&dl=1" class="logo" alt="Logo here" />
+                <button class="nav-toggle">
+                    <i class="fa fa-bars" style="font-size:36px"></i>
+                    <!--a type for menu bar-->
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Cars">Cars</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Locations">Locations</a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Users">Log in</a>
+                </li>
+                <li>
+                    <a href="aboutusPage.html">About us</a>
+                </li>
+            </ul>
+            <!-- social media -->
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- links -->
-        <ul class="links">
-          <li>
-            <a href="homePage.html">Home</a>
-          </li>
-          <li>
-            <a href="carsPage.html">Cars</a>
-          </li>
-          <li>
-            <a href="locationPage.html">Locations</a>
-          </li>
-          <li>
-            <a href="loginPage.html">Log in</a>
-          </li>
-          <li>
-            <a href="aboutusPage.html">About us</a>
-          </li>
-        </ul>
-        <!-- social media -->
-        <ul class="social-icons">
-          <li>
-            <a href="https://www.twitter.com">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
     </nav>
 
     <!-- List of assurance section -->
@@ -90,6 +81,7 @@
                                     @item.About
                                 </p>
                             </div>
+        
                         </article>
                     </div>
 
@@ -97,8 +89,8 @@
             }
         </tbody>
     </table>
-
+  
     <!-- javascript -->
 
-  </body>
-</html>
+
+</body>
