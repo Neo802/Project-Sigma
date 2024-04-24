@@ -64,3 +64,8 @@
     font-size: 18px;
     color: #333;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+}
