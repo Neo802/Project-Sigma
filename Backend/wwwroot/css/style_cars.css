@@ -148,13 +148,6 @@
 
 .heading p {
     font-size: 2rem;
+
 }
 
-.container {
-    display: flex;
-    justify-content: space-between; /* Adjust as needed */
-}
-
- .select-btn .sBtn-text:hover {
-    color: red;
-}
