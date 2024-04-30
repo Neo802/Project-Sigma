@@ -36,7 +36,6 @@ namespace ProjectRunAway.Controllers
 
             var locations = _locationService.GetLocationById(id.Value);
                 
-
             if (locations == null)
             {
                 return NotFound();
