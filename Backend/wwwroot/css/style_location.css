@@ -29,6 +29,7 @@
 }
 .services-container .box p{
 padding: 0 10px;
+
 border: 0.1rem solid #00858a;
 width: 9.5em;
 color:black;
@@ -48,6 +49,7 @@ text-align: center;
 }
 .services-container .box h2 span{
   font-size: 0.8rem;
+
   color: black;
 }
     .services-container .box .btn {
