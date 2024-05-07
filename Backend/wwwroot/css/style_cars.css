@@ -1,10 +1,10 @@
 ﻿.select-menu {
-    width: 380px;
-    margin: 150px auto;
+    width: 300px;
+    margin: 50px auto 50px auto;
+
 }
 
     .select-menu .select-btn {
-        
         height: 55px;
         background: transparent;
         padding: 20px;
@@ -14,10 +14,21 @@
         text-align: center;
         cursor: pointer;
     }
-
+.btn-primary {
+    border: 2px solid black;
+    border-radius: 40px;
+    width: 275px;
+    height: 40px;
+    margin: 5px 5px 5px 5px;
+    transition: background-color 0.5s ease-in-out;
+}
+    .btn-primary:hover {
+        background-color: #00858a;
+        color: #fff;
+    }
 .select-btn i {
     font-size: 25px;
-    transition: 0.3s;
+   
 }
 
 .select-menu.active .select-btn i {
@@ -26,34 +37,52 @@
 
 
 .select-menu .options {
-    position: relative;
-    padding: 20px;
-    margin-top: 10x;
+    position: center;
+    padding: 8px;
+    margin-top: 20px;
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.57);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    box-shadow: 7px 3px 30px rgba(0, 0, 0, 0.3);
     display: none;
 }
 
 .select-menu.active .options {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
 }
 
-.options .option {
-    display: flex;
-    height: 55px;
-    cursor: pointer;
-    padding: 0 16px;
-    border-radius: 10px;
-    align-items: center;
+.select-menu.options .option {
+    position: relative;
+    background: none;
+    width: 100%;
+    height: 30px;
+    margin: 50px 50px 50px 50px;
+    border: 2px solid black;
+    border-radius: 40px;
+
+}
+
+.select-menu.options .option input {
+    width: 100%;
+    height: 100%;
     background: transparent;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 20px 20px 20px 20px;
 }
 
-.options .option:hover {
+.form-control {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    border: 2px solid black;
+    border-radius: 40px;
+    width:275px;
+}
+    .form-control:hover {
         background: #f2f2f2;
-
-}
-
+    }
 .option i {
     font-size: 25px;
     margin-right: 12px;
@@ -65,13 +94,12 @@
 }
 
 .section-center {
-    width: 90vw;
-    margin: 0 auto;
-    max-width: 1170px;
-    display: grid;
-    gap: 3rem 2rem;
-    justify-items: center;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 20px;
+    padding: 5px; 
+
 }
 
 .menu-item {
@@ -82,24 +110,27 @@
 
 .photo {
     object-fit: cover;
-    height: 95%;
+    height: 90%;
     width: 100%;
-    border: 0.25rem solid black;
-    border-radius: 0.1rem;
+    border-radius: 0.20rem;
+    border: transparent;
 }
 .item-info header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
+    width: 400px;
 }
 
 .item-info h3 {
     margin-bottom: 0.5rem;
+    color: rgba(0,166,170);
 }
 
 .item-info h4 {
     text-align: center;
     padding-top: 0.7rem;
+    color: rgba(0,166,170);
 }
 
 .description {
@@ -108,36 +139,93 @@
     font-size: medium;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 739px) {
+    .select-menu {
+        width: 700px;
+        margin: 50px auto 50px auto;
+    }
+    .btn-primary {
+        border: 2px solid black;
+        border-radius: 40px;
+        width: 330px;
+        height: 29px;
+        margin: 14px 5px 5px 5px;
+    }
     .menu-item {
-        grid-template-columns: 225px 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 0 1.25rem;
         max-width: 40rem;
         margin-bottom: 2rem;
     }
-
+    .select-menu.active .options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .form-control {
+        margin: 5px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+        border: 2px solid black;
+        border-radius: 40px;
+        width: 330px;
+    }
+    .item-info header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 3px solid black;
+        width: 320px;
+    }
     .photo {
-        height: 100%;
-        width: 90%;
+        height: 70%;
+        width: 100%;
     }
 }
 
 @media screen and (min-width: 1200px) {
+    .select-menu {
+        width: 1200px;
+        margin: 50px auto 50px auto;
+    }
+    .btn-primary {
+        border: 2px solid black;
+        border-radius: 40px;
+        width: 150px;
+        height: 40px;
+        margin: 5px 5px 5px 5px;
+    }
     .section-center {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 20px; 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
     }
-
+    .form-control {
+        margin: 5px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+        border: 2px solid black;
+        border-radius: 40px;
+        width: 153px;
+    }
+    .select-menu.active .options {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
     .photo {
         height: auto;
         width: 100%; 
+    }
+    .item-info header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 3px solid black;
+        width: 320px;
     }
 }
 
 
 .photo:hover {
-    border: 0.25rem solid rgba(255, 0, 0, 0.456);
+    border: 0.25rem solid rgba(0,166,170);
+    border-radius: 30px;
+    transition: border 0.3s ease-in-out;
 }
 
 .heading p, h1 {

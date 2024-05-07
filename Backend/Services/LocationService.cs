@@ -1,4 +1,6 @@
-﻿using ProjectRunAway.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ProjectRunAway.Models;
 using ProjectRunAway.Repositories.Interfaces;
 using ProjectRunAway.Services.Interfaces;
 
@@ -51,5 +53,7 @@ namespace ProjectRunAway.Services
         {
             return _repositoryWrapper.LocationRepository.FindAll().ToList();
         }
+       
+
     }
 }

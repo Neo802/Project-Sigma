@@ -2,70 +2,83 @@
 
 /* Style for home page*/
 
-.home{
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  background: url(background.jpg);
-  background-repeat: no-repeat;
-  background-position: center right;
-  background-size: cover;
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(2,1fr);
+.home {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2,1fr);
 }
-.text h1{
-  font-size: 3.5rem;
-  letter-spacing: 2px;
-  position: absolute;
-  top: 30px;
-  left: 60px;
-  right: 60px;
+
+.text h1 {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    right: 60px;
+    color: rgba(120,166,170);
 }
-.text span{
-  color: red;
+
+.text span {
+    color:rgba(0,166,170);
 }
-.text p{
-  margin: 00.5re, 0 1rem;
+
+.text p {
+    margin: 0.5rem 0 1rem;
+
 }
-.form-container form{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  position: absolute;
-  bottom: 4rem;
-  left: 100px;
- 
-  background: transparent;
-  padding:20px;
+
+.form-container form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    bottom: 4rem;
+    left: 100px;
+    background: transparent;
+    padding: 20px;
 }
-.input-box{
-  flex: 1 1 7rem;
-  display: flex;
-  flex-direction: column;
+
+.input-box {
+    flex: 1 1 7rem;
+    display: flex;
+    flex-direction: column;
 }
-.input-box span{
-  font-weight: 500;
+
+    .input-box span {
+        font-weight: 500;
+    }
+        .input-box span h3 {
+            font-weight: 500;
+            color: rgba(0,166,170);
+        }
+    .input-box input {
+        padding: 17px;
+        outline: none;
+        border: none;
+        background: rgba(120,166,170);
+        border-radius: 0.7rem;
+        font-size: 1.1rem;
+    }
+
+.form-container form .btn {
+    flex: 2 2 7rem;
+    padding: 20px 4px;
+    border: none;
+    border-radius: 0.5rem;
+    background: #00858a;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.5s ease-in-out;
 }
-.input-box input{
-  padding:17px;
-  outline:none;
-  border:none;
-  background: rgba(255, 0, 0, 0.327);
-  border-radius: 0.7rem;
-  font-size: 1.1rem;
-}
-.form-container form .btn{
-  flex: 2 2 7rem;
-  padding: 20px 4px;
-  border: none;
-  border-radius: 0.5rem;
-  background: rgba(255, 0, 0, 0.583);
-  color:black;
-  font-size: 1rem;
-  font-weight: 500;
-}
-.form-container form .btn:hover{
-  background: red;
-}
+
+    .form-container form .btn:hover {
+        background: rgba(0,166,170);
+    }

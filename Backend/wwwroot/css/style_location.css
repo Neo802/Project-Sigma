@@ -3,7 +3,6 @@
 /* Style for location page*/
 
 .services-container {
-
   padding-right: 5rem;
   padding-left: 5rem;
   display: grid;
@@ -29,7 +28,6 @@
 }
 .services-container .box p{
 padding: 0 10px;
-
 border: 0.1rem solid #00858a;
 width: 9.5em;
 color:black;
