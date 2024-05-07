@@ -26,7 +26,6 @@ namespace ProjectRunAway.Controllers
         {
             IQueryable<Cars> query = _carsServices.GetAllCars().AsQueryable();
 
-
             if (!string.IsNullOrEmpty(carMake))
             {
                 query = query.Where(c => c.Manufacturer == carMake);
@@ -62,7 +61,7 @@ namespace ProjectRunAway.Controllers
                 query = query.Where(c => c.Seats == seating);
             }
 
-            return View(query.ToList()); // Changed to synchronous ToList
+            return View(query.ToList()); 
         }
 
         // GET: Cars/Details/5

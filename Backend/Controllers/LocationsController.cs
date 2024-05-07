@@ -27,21 +27,15 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Details/5
-        public IActionResult Details(int? id)
+        public IActionResult Details(int locationId)
         {
-            if (id == null)
+            var cars = _locationService.GetAllLocations();
+            if (cars == null || !cars.Any())
             {
-                return NotFound();
+                return View(cars);
             }
 
-            var locations = _locationService.GetLocationById(id.Value);
-                
-            if (locations == null)
-            {
-                return NotFound();
-            }
-
-            return View(locations);
+            return View();
         }
 
         // GET: Locations/Create
