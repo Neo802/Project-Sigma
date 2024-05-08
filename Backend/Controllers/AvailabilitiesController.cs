@@ -58,7 +58,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Busy_car,Date_start,Date_end,From_hour,To_hour,CarsId,LocationsId")] Availability availability)
+        public async Task<IActionResult> Create([Bind("BusyCar,DateStart,DateEnd,FromHour,ToHour,CarsId,LocationsId")] Availability availability)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Busy_car,Date_start,Date_end,From_hour,To_hour,CarsId,LocationsId")] Availability availability)
+        public async Task<IActionResult> Edit(int id, [Bind("BusyCar,DateStart,DateEnd,FromHour,ToHour,CarsId,LocationsId")] Availability availability)
         {
             if (id != availability.CarsId)
             {

@@ -81,7 +81,7 @@
     <section class="services" id="services">
         <div class="heading">
             <span><p>Big Cities</p></span>
-            <h1>See our location</h1>
+            <h1>See our locations</h1>
         </div>
         <div class="services-container">
             @foreach (var item in Model)
@@ -89,12 +89,15 @@
                 <div class="box">
                     <div class="box-img">
                         <img src="https://www.dropbox.com/scl/fi/slnhoydwlpz6myqkbykl7/craiova.png?rlkey=xlxl3dhvbuf1cgzqnmmn2cb7d&st=eby0rxrn&dl=1" alt="can not accessed car5.jpg">
-                </div>
+                    </div>
                     <p>Cars: @Html.DisplayFor(modelItem => item.CarsAvailable)</p>
                     <h3>@Html.DisplayFor(modelItem => item.City)</h3>
-                    <a asp-action="Details" asp-route-id="@item.LocationsId" class="btn">View cars here</a>
-            </div>
-              }
+                    @* <a asp-action="Details" asp-route-id="@item.LocationsId" class="btn">View cars here</a> *@
+                    <a href="@Url.Action("Index", "Cars", new { locationId = item.LocationsId })" class="btn">View Cars here</a>
+                    @* <a asp-action="Details" asp-route-id="@item.LocationsId" class="btn">View cars here</a> *@
+                </div>
+            }
+
         </div>
     </section>
     <!-- javascript -->
