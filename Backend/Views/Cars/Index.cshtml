@@ -100,25 +100,13 @@
                 <li class="option"><input type="text" name="bodyType" class="form-control" placeholder="Body type..."></li>
                 <li class="option"><input type="text" name="seatingCapacity" class="form-control" placeholder="Seating..."></li>
 
-                @* <div class="filter-container">
-                    <div id="filter-options" style="display: none;">
-                        <button type="submit" name="sortType" value=1>Increasing Price</button>
-                        <button type="submit" name="sortType" value=2>Decreasing Price</button>
-                    </div>
-                </div> *@
-
                 <button type="submit" class="btn-primary" name="sortType" value=1>Show by Increasing</button>
                 <button type="submit" class="btn-primary" name="sortType" value=2>Show by Decreasing</button>
                 <button type="submit" class="btn-primary">Filter</button>
-
             </ul>
         </form>
-
-        @* <div class="filter-container">
-            <button onclick="toggleFilterOptions()">Sort</button>
-        </div> *@
     </div>
-
+  
     <div class="section-center">
     @foreach (var item in Model)
     {
@@ -138,15 +126,52 @@
                 <p class="description">
                     @item.Description
                 </p>
+                <button onclick="showCarDetails(@item.CarsId)">Show More</button>
             </div>
         </article>
     }
-</div>
+    </div>
 
+    <!-- Modal Structure -->
+    <div id="carDetailsModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="carDetails"></span>
+            <button onclick="closeModal()">Close</button>
+        </div>
+        <div class="modal-overlay" onclick="closeModal()"></div>
+    </div>
 
-    </section>
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
 
     <script src="~/js/app_cars.js"></script>
     <script src="~/js/app_general.js"></script>
+    <script src="~/js/car_details.js"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@ namespace ProjectRunAway.Controllers
         {
             
             IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
-
+            
             if (query == null || !query.Any())
             {
                 query = _carsServices.GetAllCars().AsQueryable();
@@ -76,7 +76,6 @@ namespace ProjectRunAway.Controllers
             }
            
             return View(query.ToList());
-  
         }
 
         // GET: Cars/Details/5
