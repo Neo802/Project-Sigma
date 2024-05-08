@@ -12,3 +12,13 @@ options.forEach(option => {
         optionMenu.classList.remove("active");
     });
 });
+
+function toggleFilterOptions() {
+    const filterOptions = document.getElementById('filter-options');
+    if (filterOptions.style.display === 'none') {
+        filterOptions.style.display = 'block';
+    } else {
+        filterOptions.style.display = 'none';
+    }
+}
+

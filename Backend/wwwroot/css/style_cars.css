@@ -99,6 +99,18 @@
     font-size: 18px;
     color: #333;
 }
+.filter-container {
+    margin-bottom: 20px;
+    text-align: center; /* Center align the content */
+}
+
+input, button {
+    margin-right: 10px;
+}
+
+button {
+    margin-top: 10px; /* Add margin to the top */
+}
 
 .section-center {
     display: flex;
