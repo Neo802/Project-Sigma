@@ -24,21 +24,6 @@ namespace ProjectRunAway.Controllers
             return Json(car);
         }
 
-        public IActionResult Index(int locationId, string carMake, string carModel, string searchText, float priceMin, float priceMax, string fuelType, string bodyType, string seating, int sortType)
-        {
-            var cars = _carsServices.GetAllCars();
-            return View(cars);
-        }
-        */
-        public IActionResult GetCarDetails(int id)
-        {
-            var car = _carsServices.GetCarsById(id);  // Make sure you have a method to fetch car by ID
-            if (car == null)
-                return NotFound();
-
-            return Json(car);
-        }
-
         public IActionResult Index(int locationId, string carMake, string carModel, string searchText, float price, string fuelType, string bodyType, string seating)
         {
             //IQueryable<Cars> query = _carsServices.GetAllCars().AsQueryable();
