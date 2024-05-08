@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using ProjectRunAway.Models;
+using ProjectRunAway.Services;
 using ProjectRunAway.Services.Interfaces;
 
 namespace ProjectRunAway.Controllers
@@ -14,18 +16,15 @@ namespace ProjectRunAway.Controllers
             _carsServices = carsServices;
         }
 
-        // GET: Cars
-        /*
-        public IActionResult Index()
+        public IActionResult Index(int locationId, string carMake, string carModel, string searchText, float priceMin, float priceMax, string fuelType, string bodyType, string seating, int sortType)
         {
-            var cars = _carsServices.GetAllCars();
-            return View(cars);
-        }
-        */
-        public IActionResult Index(string carMake, string carModel, string searchText, float price, string fuelType, string bodyType, string seating)
-        {
-            IQueryable<Cars> query = _carsServices.GetAllCars().AsQueryable();
+            
+            IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
 
+            if (query == null || !query.Any())
+            {
+                query = _carsServices.GetAllCars().AsQueryable();
+            }
 
             if (!string.IsNullOrEmpty(carMake))
             {
@@ -42,9 +41,14 @@ namespace ProjectRunAway.Controllers
                 query = query.Where(c => c.Manufacturer.Contains(searchText) || c.Model.Contains(searchText));
             }
 
-            if (price != 0)
+            if (priceMin != 0)
             {
-                query = query.Where(c => c.PriceCar < price);
+                query = query.Where(c => c.PriceCar >= Math.Min(priceMin, priceMax));
+            }
+
+            if (priceMax != 0)
+            {
+                query = query.Where(c => c.PriceCar <= Math.Max(priceMin, priceMax));
             }
 
             if (!string.IsNullOrEmpty(fuelType))
@@ -62,7 +66,17 @@ namespace ProjectRunAway.Controllers
                 query = query.Where(c => c.Seats == seating);
             }
 
-            return View(query.ToList()); // Changed to synchronous ToList
+            if (sortType == 1)
+            {
+                return View(query.ToList().OrderBy(c => c.PriceCar));
+                
+            }else if (sortType == 2)
+            {
+                return View(query.ToList().OrderByDescending(c => c.PriceCar));
+            }
+           
+            return View(query.ToList());
+  
         }
 
         // GET: Cars/Details/5

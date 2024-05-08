@@ -22,7 +22,7 @@
         <div class="nav-center">
             <!-- nav header -->
             <div class="nav-header">
-                <img src="https://www.dropbox.com/scl/fi/53xetjjphcvhirjpcxvml/logo.png?rlkey=su18qkjqsey3k50py8mws78zj&st=3nj4zqxu&dl=1" class="logo" alt="Logo here" />
+                <img src="https://www.dropbox.com/scl/fi/9v0f4t9dj02zy9sdbskro/RunAwayS.png?rlkey=vuqzo83yypktcekhgqosbmuo1&st=ci700b45&dl=1" class="logo" alt="Logo here" />
                 <button class="nav-toggle">
                     <i class="fa fa-bars" style="font-size:36px"></i>
                     <!--a type for menu bar-->
@@ -43,7 +43,7 @@
                     <a asp-action="Login" asp-controller="Users">Log in</a>
                 </li>
                 <li>
-                    <a href="aboutusPage.html">About us</a>
+                    <a asp-action="Index" asp-controller="About">About us</a>
                 </li>
             </ul>
             <!-- social media -->
@@ -67,7 +67,7 @@
     <div class="select-menu">
         <form asp-action="Index" method="get">
             <div class="select-btn">
-                <span class="sBtn-text">Filter Options</span>
+                <span class="sBtn-text">Filter & Sort Options</span>
                 <i class="bx bx-chevron-down"></i>
             </div>
 
@@ -94,61 +94,59 @@
                     </select>
                 </li>
                 <!-- Additional Filters -->
-                <li class="option"><input type="text" name="price" class="form-control" placeholder="Price..."></li>
+                <li class="option"><input type="text" name="priceMin" class="form-control" placeholder="Price min..."></li>
+                <li class="option"><input type="text" name="priceMax" class="form-control" placeholder="Price max..."></li>
                 <li class="option"><input type="text" name="fuelType" class="form-control" placeholder="Fuel type..."></li>
                 <li class="option"><input type="text" name="bodyType" class="form-control" placeholder="Body type..."></li>
                 <li class="option"><input type="text" name="seatingCapacity" class="form-control" placeholder="Seating..."></li>
-                <button type="submit" class="btn btn-primary">Filter</button>
+
+                @* <div class="filter-container">
+                    <div id="filter-options" style="display: none;">
+                        <button type="submit" name="sortType" value=1>Increasing Price</button>
+                        <button type="submit" name="sortType" value=2>Decreasing Price</button>
+                    </div>
+                </div> *@
+
+                <button type="submit" class="btn-primary" name="sortType" value=1>Show by Increasing</button>
+                <button type="submit" class="btn-primary" name="sortType" value=2>Show by Decreasing</button>
+                <button type="submit" class="btn-primary">Filter</button>
+
             </ul>
         </form>
-    </div>
 
-    <!-- Sorting button  -->
-    <div class="select-menu">
-        <div class="select-btn">
-            <span class="sBtn-text">Sort</span>
-            <i class="bx bx-chevron-down"></i>
-        </div>
-
-        <ul class="options">
-            <li class="option">
-                <i class="bx bxl-colour"></i>
-                <span class="option-text">Price</span>
-            </li>
-            <li class="option">
-                <i class="bx bxl-manufacturer"></i>
-                <span class="option-text">Rating</span>
-            </li>
-        </ul>
-    </div>
+        @* <div class="filter-container">
+            <button onclick="toggleFilterOptions()">Sort</button>
+        </div> *@
     </div>
 
     <div class="section-center">
-      
+    @foreach (var item in Model)
+    {
         <article class="menu-item">
-            @foreach (var item in Model)
-            {
-                <img src="images/car5.jpg" class="photo" alt="can not access">
-            </img>
+                <img src="https://www.dropbox.com/scl/fi/nn242zte3oiidqutzq8sx/bmw-3-4d-black-2022.png?rlkey=qdithp98excfnujkp26e7oyo1&st=eyfvwqhp&dl=1" class="photo" alt="Image of @item.Model">
             <div class="item-info">
                 <header>
                     <h3>@item.Manufacturer</h3>
                     <h3 class="year">@item.Model</h3>
                 </header>
-                    <h4><i class="fa-solid fa-car"></i> @item.Type <i class="fa-solid fa-person"></i> @item.Seats <i class="fa-solid fa-gas-pump"></i> @item.Fuel <i class="fa-solid fa-euro-sign"></i> @item.PriceCar</h4>
+                <h4>
+                    <i class="fa-solid fa-car"></i> @item.Type
+                    <i class="fa-solid fa-person"></i> @item.Seats
+                    <i class="fa-solid fa-gas-pump"></i> @item.Fuel
+                    <i class="fa-solid fa-euro-sign"></i> @item.PriceCar
+                </h4>
                 <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, magnam!
+                    @item.Description
                 </p>
-                  
-                    
             </div>
-            }
         </article>
-      
-    </div>
+    }
+</div>
+
+
     </section>
 
     <script src="~/js/app_cars.js"></script>
-
+    <script src="~/js/app_general.js"></script>
 </body>
 </html>
