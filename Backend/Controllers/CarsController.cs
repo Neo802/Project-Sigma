@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectRunAway.Models;
+using ProjectRunAway.Services;
 using ProjectRunAway.Services.Interfaces;
 
 namespace ProjectRunAway.Controllers
@@ -22,9 +23,15 @@ namespace ProjectRunAway.Controllers
             return View(cars);
         }
         */
-        public IActionResult Index(string carMake, string carModel, string searchText, float price, string fuelType, string bodyType, string seating)
+        public IActionResult Index(int locationId, string carMake, string carModel, string searchText, float price, string fuelType, string bodyType, string seating)
         {
-            IQueryable<Cars> query = _carsServices.GetAllCars().AsQueryable();
+            //IQueryable<Cars> query = _carsServices.GetAllCars().AsQueryable();
+            IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
+
+            if (query == null || !query.Any())
+            {
+                query = _carsServices.GetAllCars().AsQueryable();
+            }
 
             if (!string.IsNullOrEmpty(carMake))
             {
@@ -43,7 +50,7 @@ namespace ProjectRunAway.Controllers
 
             if (price != 0)
             {
-                query = query.Where(c => c.PriceCar < price);
+                query = query.Where(c => c.PriceCar == price);
             }
 
             if (!string.IsNullOrEmpty(fuelType))

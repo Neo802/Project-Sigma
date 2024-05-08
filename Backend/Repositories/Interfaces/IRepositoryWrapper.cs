@@ -2,6 +2,7 @@
 {
     public interface IRepositoryWrapper
     {
+        IAvailabilityRepository AvailabilityRepository { get; }
         ILocationRepository LocationRepository { get; }
         ICarsRepository CarsRepository { get; }
         ILiabilitiesRepository LiabilitiesRepository { get; }
