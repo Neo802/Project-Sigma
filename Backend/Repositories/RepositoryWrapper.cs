@@ -7,10 +7,24 @@ namespace ProjectRunAway.Repositories
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private TableContext _Context;
+        private IAvailabilityRepository? _availabilityRepository;
         private ILocationRepository? _locationRepository;
         private ICarsRepository? _carsRepository;
         private ILiabilitiesRepository? _liabilitiesRepository;
-        private IFeaturesRepository? _featuresRepository;   
+        private IFeaturesRepository? _featuresRepository;
+
+        public IAvailabilityRepository AvailabilityRepository
+        {
+            get
+            {
+                if (_availabilityRepository == null)
+                {
+                    _availabilityRepository = new AvailabilityRepository(_Context);
+                }
+
+                return _availabilityRepository;
+            }
+        }
         public ILocationRepository LocationRepository
         {
             get
