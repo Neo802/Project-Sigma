@@ -71,10 +71,10 @@
             <h1>Do you <span>need a car</span>?<br> <span>Rent a car</span></h1>
         </div>
         <div class="form-container">
-            <form action="">
+             <form asp-action="Index" method="get">
                 <div class="input-box">
                     <span><h3>Location</h3></span>
-                    <input type="search" name="" id="" placeholder="Search Places">
+                    <input type="text" name="searchText" class="form-control" placeholder="Search Places...">
                 </div>
                 <div class="input-box">
                     <span><h3>Pick up Date</h3></span>

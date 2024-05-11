@@ -9,7 +9,6 @@ namespace ProjectRunAway.Controllers
     public class CarsController : Controller
     {
         private readonly ICarsService _carsServices;
-
         public CarsController(ICarsService carsServices)
         {
             _carsServices = carsServices;
@@ -27,11 +26,23 @@ namespace ProjectRunAway.Controllers
         {
             //IQueryable<Cars> query = _carsServices.GetAllCars().AsQueryable();
             IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
+<<<<<<< Updated upstream
 
             if (query == null || !query.Any())
+=======
+           
+            if ((query == null || !query.Any()) && locationId == 0)
+>>>>>>> Stashed changes
             {
                 query = _carsServices.GetAllCars().AsQueryable();
+          
             }
+          
+            if ((query == null || !query.Any())  && locationId != 0)
+                {
+                    query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
+                }
+           
 
             if (!string.IsNullOrEmpty(carMake))
             {
@@ -50,7 +61,16 @@ namespace ProjectRunAway.Controllers
 
             if (price != 0)
             {
+<<<<<<< Updated upstream
                 query = query.Where(c => c.PriceCar == price);
+=======
+                query = query.Where(c => c.PriceCar >= Math.Min(priceMax, priceMin));
+            }
+
+            if (priceMax != 0)
+            {
+                query = query.Where(c => c.PriceCar <= Math.Max(priceMin, priceMax));
+>>>>>>> Stashed changes
             }
 
             if (!string.IsNullOrEmpty(fuelType))
