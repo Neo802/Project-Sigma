@@ -44,7 +44,6 @@
                 </li>
                 <li>
                     <a asp-action="Index" asp-controller="About">About us</a>
-
                 </li>
             </ul>
             <!-- social media -->
@@ -88,7 +87,8 @@
             {
                 <div class="box">
                     <div class="box-img">
-                        <img src="https://www.dropbox.com/scl/fi/slnhoydwlpz6myqkbykl7/craiova.png?rlkey=xlxl3dhvbuf1cgzqnmmn2cb7d&st=eby0rxrn&dl=1" alt="can not accessed car5.jpg">
+                        @* <img src="https://www.dropbox.com/scl/fi/slnhoydwlpz6myqkbykl7/craiova.png?rlkey=xlxl3dhvbuf1cgzqnmmn2cb7d&st=eby0rxrn&dl=1" alt="can not accessed car5.jpg"> *@
+                        <img src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" />
                     </div>
                     <p>Cars: @Html.DisplayFor(modelItem => item.CarsAvailable)</p>
                     <h3>@Html.DisplayFor(modelItem => item.City)</h3>
@@ -97,7 +97,6 @@
                     @* <a asp-action="Details" asp-route-id="@item.LocationsId" class="btn">View cars here</a> *@
                 </div>
             }
-
         </div>
     </section>
     <!-- javascript -->

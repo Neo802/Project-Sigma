@@ -63,6 +63,13 @@
 
 }
 
+.truncate {
+    width: 200px; /* or any width */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .select-menu.options .option input {
     width: 100%;
     height: 100%;
@@ -91,6 +98,18 @@
 .option .option-text {
     font-size: 18px;
     color: #333;
+}
+.filter-container {
+    margin-bottom: 20px;
+    text-align: center; /* Center align the content */
+}
+
+input, button {
+    margin-right: 10px;
+}
+
+button {
+    margin-top: 10px; /* Add margin to the top */
 }
 
 .section-center {
