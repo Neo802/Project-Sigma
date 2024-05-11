@@ -111,7 +111,8 @@
     @foreach (var item in Model)
     {
         <article class="menu-item">
-                <img src="https://www.dropbox.com/scl/fi/nn242zte3oiidqutzq8sx/bmw-3-4d-black-2022.png?rlkey=qdithp98excfnujkp26e7oyo1&st=eyfvwqhp&dl=1" class="photo" alt="Image of @item.Model">
+                @* <img src="https://www.dropbox.com/scl/fi/nn242zte3oiidqutzq8sx/bmw-3-4d-black-2022.png?rlkey=qdithp98excfnujkp26e7oyo1&st=eyfvwqhp&dl=1" class="photo" alt="Image of @item.Model"> *@
+                <img src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" class="photo" alt="Image of @item.Model" />
             <div class="item-info">
                 <header>
                     <h3>@item.Manufacturer</h3>

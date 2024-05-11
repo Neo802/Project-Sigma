@@ -6,6 +6,7 @@
         public string? Manufacturer { get; set; }
         public string? Model { get; set; }
         public string? Description { get; set; }
+        public string? Image { get; set; }
         public string? Fuel { get; set; }
         public string? Seats { get; set; }
         public string? Gear { get; set; }
