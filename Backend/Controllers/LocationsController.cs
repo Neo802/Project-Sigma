@@ -57,7 +57,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("LocationsId,City,CarsAvailable,Description")] Locations locations)
+        public IActionResult Create([Bind("LocationsId,City,CarsAvailable,Description,Image")] Locations locations)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("LocationsId,City,CarsAvailable,Description")] Locations locations)
+        public IActionResult Edit(int id, [Bind("LocationsId,City,CarsAvailable,Description,Image")] Locations locations)
         {
             if (id != locations.LocationsId)
             {

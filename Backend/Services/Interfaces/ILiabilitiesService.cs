@@ -10,6 +10,7 @@ namespace ProjectRunAway.Services.Interfaces
         public Liability GetLiabilityById(int id);
         public List<Liability> EditExisting();
         IEnumerable<Liability> GetAllLiabilities();
-       //public void Save();
+        IEnumerable<Liability> GetLiabilityByCarId(int Id);
+        //public void Save();
     }
 }

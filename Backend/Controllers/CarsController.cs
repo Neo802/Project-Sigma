@@ -23,7 +23,11 @@ namespace ProjectRunAway.Controllers
 
             return Json(car);
         }
-        
+        public ActionResult AdminCars()
+        {
+            var locations = _carsServices.GetAllCars();
+            return View(locations);
+        }
         public IActionResult Index(int locationId, string carMake, string carModel, string searchText, float priceMin, float priceMax, string fuelType, string bodyType, string seating, int sortType)
         {
             IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
@@ -161,7 +165,6 @@ namespace ProjectRunAway.Controllers
             if (ModelState.IsValid)
             {
                 _carsServices.UpdateCars(cars);
-                //_carsServices.Save();
                 return RedirectToAction(nameof(Index));
             }
             return View(cars);

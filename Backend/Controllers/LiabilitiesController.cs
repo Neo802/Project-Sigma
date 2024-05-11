@@ -20,10 +20,21 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities
-        public IActionResult Index()
+        public IActionResult AdminLiabilities()
         {
             var liability = _liabilityService.GetAllLiabilities();
             return View(liability);
+        }
+        public IActionResult Index(int carsId)
+        {
+            var query = _liabilityService.GetLiabilityByCarId(carsId);
+
+            //if (carsId != 0)
+            //{
+            //    query = query.Where(l => l.Cars.CarsId == carsId);
+            //}
+
+            return View(query);
         }
 
         // GET: Liabilities/Details/5

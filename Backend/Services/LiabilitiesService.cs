@@ -48,6 +48,11 @@ namespace ProjectRunAway.Services
             return liability; // Assuming you want to return the user if found
 
         }
+        public IEnumerable<Liability> GetLiabilityByCarId(int id)
+        {
+            return _repositoryWrapper.LiabilitiesRepository.FindByCondition(c => c.CarsId.Equals(id)).ToList();
+        }
+
         public IEnumerable<Liability> GetAllLiabilities()
         {
             return _repositoryWrapper.LiabilitiesRepository.FindAll().ToList();
