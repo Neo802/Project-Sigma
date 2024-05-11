@@ -37,12 +37,7 @@ namespace ProjectRunAway.Services
             _repositoryWrapper.LiabilitiesRepository.Update(liability);
             _repositoryWrapper.Save();
         }
-        /*
-        public void Save()
-        {
-            _repositoryWrapper.Save();
-        }
-        */
+ 
         public Liability GetLiabilityById(int id)
         {
             var liability = _repositoryWrapper.LiabilitiesRepository.FindByCondition(liability => liability.LiabilityId == id).FirstOrDefault();

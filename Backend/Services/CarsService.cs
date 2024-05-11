@@ -15,7 +15,6 @@ namespace ProjectRunAway.Services
         {
             IQueryable<Availability> filteredAvailabilities = _repositoryWrapper.AvailabilityRepository
             .FindByCondition(a => a.LocationsId == locationId);
-
             // Now, fetch the cars based on the availabilities. This presumes that the Availability entity
             // has a navigation property 'Car' that can be used to directly access related car data.
             IEnumerable<Cars> cars = filteredAvailabilities

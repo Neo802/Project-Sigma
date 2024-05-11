@@ -10,7 +10,6 @@ namespace ProjectRunAway.Controllers
     public class CarsController : Controller
     {
         private readonly ICarsService _carsServices;
-
         public CarsController(ICarsService carsServices)
         {
             _carsServices = carsServices;
@@ -29,9 +28,14 @@ namespace ProjectRunAway.Controllers
         {
             IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
             
-            if (query == null || !query.Any())
+            if ((query == null || !query.Any()) && locationId == 0)
             {
                 query = _carsServices.GetAllCars().AsQueryable();
+            }
+          
+            if ((query == null || !query.Any())  && locationId != 0)
+            {
+                query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
             }
 
             if (!string.IsNullOrEmpty(carMake))
@@ -51,7 +55,7 @@ namespace ProjectRunAway.Controllers
 
             if (priceMin != 0)
             {
-                query = query.Where(c => c.PriceCar >= Math.Min(priceMin, priceMax));
+                query = query.Where(c => c.PriceCar >= Math.Min(priceMax, priceMin));
             }
 
             if (priceMax != 0)
