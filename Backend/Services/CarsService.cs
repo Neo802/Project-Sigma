@@ -66,7 +66,6 @@ namespace ProjectRunAway.Services
                 return null;
             }
             return cars; // Assuming you want to return the user if found
-
         }
         public IEnumerable<Cars> GetAllCars()
         {

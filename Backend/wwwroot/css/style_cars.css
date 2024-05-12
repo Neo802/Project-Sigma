@@ -4,16 +4,17 @@
 
 }
 
-    .select-menu .select-btn {
-        height: 55px;
-        background: transparent;
-        padding: 20px;
-        font-size: 18px;
-        font-weight: 600;
-        border-radius: 8px;
-        text-align: center;
-        cursor: pointer;
-    }
+.select-menu .select-btn {
+    height: 55px;
+    background: transparent;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
 .btn-primary {
     border: 2px solid black;
     border-radius: 40px;
@@ -22,10 +23,12 @@
     margin: 5px 5px 5px 5px;
     transition: background-color 0.5s ease-in-out;
 }
-    .btn-primary:hover {
-        background-color: #00858a;
-        color: #fff;
-    }
+
+.btn-primary:hover {
+    background-color: #00858a;
+    color: #fff;
+}
+
 .select-btn i {
     font-size: 25px;
    
@@ -35,12 +38,11 @@
     transform: rotate(-180deg);
 }
 
-
 .select-menu .options {
     position: center;
     padding: 8px;
     margin-top: 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     background: #fff;
     box-shadow: 7px 3px 30px rgba(0, 0, 0, 0.3);
     display: none;
@@ -49,7 +51,6 @@
 .select-menu.active .options {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-
 }
 
 .select-menu.options .option {
@@ -60,7 +61,6 @@
     margin: 50px 50px 50px 50px;
     border: 2px solid black;
     border-radius: 40px;
-
 }
 
 .truncate {
@@ -87,9 +87,11 @@
     border-radius: 40px;
     width:275px;
 }
-    .form-control:hover {
-        background: #f2f2f2;
-    }
+
+.form-control:hover {
+    background: #f2f2f2;
+}
+
 .option i {
     font-size: 25px;
     margin-right: 12px;
@@ -99,6 +101,7 @@
     font-size: 18px;
     color: #333;
 }
+
 .filter-container {
     margin-bottom: 20px;
     text-align: center; /* Center align the content */
@@ -118,22 +121,24 @@ button {
     justify-content: center; 
     gap: 20px;
     padding: 5px; 
-
 }
 
 .menu-item {
     display: grid;
     gap: 1rem 2rem;
     max-width: 25rem;
+    height: 170px;
+    width:570px;
 }
 
 .photo {
     object-fit: cover;
-    height: 90%;
+    height: 100%;
     width: 100%;
-    border-radius: 0.20rem;
+    border-radius: 1rem;
     border: transparent;
 }
+
 .item-info header {
     display: flex;
     justify-content: space-between;
@@ -229,7 +234,7 @@ button {
         grid-template-columns: repeat(7, 1fr);
     }
     .photo {
-        height: auto;
+        height: 100%;
         width: 100%; 
     }
     .item-info header {
@@ -243,7 +248,7 @@ button {
 
 .photo:hover {
     border: 0.25rem solid rgba(0,166,170);
-    border-radius: 30px;
+    border-radius: 1.25rem;
     transition: border 0.3s ease-in-out;
 }
 
