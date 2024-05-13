@@ -10,8 +10,6 @@
             document.getElementById('fuel').innerText = data.fuel;
             document.getElementById('fuelCapacity').innerText = data.tankcapacity;
             document.getElementById('gearType').innerText = data.gear;
-            console.log(data.manufacturer);
-
 
             // Features
             document.getElementById('f1').innerText = data.f1;
