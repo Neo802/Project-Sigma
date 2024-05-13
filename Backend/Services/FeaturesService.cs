@@ -24,7 +24,7 @@ namespace ProjectRunAway.Services
                 _repositoryWrapper.Save();
                 return string.Empty;
             }
-            return "The car doesnt exist";
+            return "The feature doesn't exist";
 
         }
 
@@ -38,12 +38,6 @@ namespace ProjectRunAway.Services
             _repositoryWrapper.FeaturesRepository.Update(feature);
             _repositoryWrapper.Save();
         }
-        /*
-        public void Save()
-        {
-            _repositoryWrapper.Save();
-        }
-        */
         public Features GetFeatureById(int id)
         {
             var feature = _repositoryWrapper.FeaturesRepository.FindByCondition(liability => liability.FeaturesId == id).FirstOrDefault();
