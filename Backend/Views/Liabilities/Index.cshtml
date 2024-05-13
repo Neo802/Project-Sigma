@@ -2,9 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = null;
 }
-<link rel="stylesheet" href="~/css/style_general.css" />
 <link rel="stylesheet" href="~/css/style_assurance.css" />
 <body>
     <!--preloader-->
@@ -89,7 +87,7 @@
 
                             <div class="item-info">
                                 <header>
-                                    <h3><a href>@item.Category</a></h3>
+                                    <h3><a href="@Url.Action("", "Extra", new { carsId = item.CarsId })">@item.Category</a></h3>
                                     <h3>@item.PriceLiability $</h3>
                                 </header>
                                 <p class="paragraph">
@@ -104,9 +102,5 @@
             }
         </tbody>
     </table>
-  
-    <!-- javascript -->
-    <script src="~/js/app_general.js"></script>
-
 
 </body>
