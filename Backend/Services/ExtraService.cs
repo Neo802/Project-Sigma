@@ -2,8 +2,6 @@
 using ProjectRunAway.Repositories;
 using ProjectRunAway.Repositories.Interfaces;
 using ProjectRunAway.Services.Interfaces;
-
-
 namespace ProjectRunAway.Services
 {
     public class ExtraService : IExtraService
@@ -27,7 +25,6 @@ namespace ProjectRunAway.Services
             return "The extra doesnt exist";
 
         }
-
         public void DeleteExtra(Extra extra)
         {
             _repositoryWrapper.ExtraRepository.Delete(extra);

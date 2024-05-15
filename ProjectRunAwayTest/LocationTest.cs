@@ -16,6 +16,7 @@ namespace ProjectRunAwayTest
         private List<Locations> _locations;
         private LocationService _locationService;
 
+
         [TestInitialize]
         public void Setup()
         {
@@ -45,6 +46,7 @@ namespace ProjectRunAwayTest
             _mockWrapper.Setup(x => x.LocationRepository).Returns(_mockLocationRepository.Object);
         }
 
+
         [TestMethod]
         public void GetLocationById_ReturnsCorrectLocation()
         {
@@ -55,6 +57,7 @@ namespace ProjectRunAwayTest
             Assert.AreEqual("https://xplorer.ro/wp-content/uploads/2023/10/TOP-23-obiective-turistice-Craiova-768x514.webp", result.Image);
             Assert.AreEqual("da", result.Description);
         }
+
 
         [TestMethod]
         public void GetAllLocations_ReturnsCorrectLocations()
@@ -76,6 +79,8 @@ namespace ProjectRunAwayTest
                 Assert.AreEqual(_locations[i].Image, result[i].Image);
             }
         }
+
+
 
         [TestMethod]
         public void AddLocation_CallsCreateMethodOnce()
@@ -103,6 +108,7 @@ namespace ProjectRunAwayTest
             )), Times.Once);
         }
 
+
         [TestMethod]
         public void DeleteLocation_CallsDeleteMethodOnce()
         {
@@ -121,6 +127,8 @@ namespace ProjectRunAwayTest
                 loc.Image == locationToDelete.Image
             )), Times.Once);
         }
+
+
 
         [TestMethod]
         public void UpdateLocation_CallsUpdateMethodOnce()
