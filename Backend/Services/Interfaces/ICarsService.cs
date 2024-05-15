@@ -8,6 +8,7 @@ namespace ProjectRunAway.Services.Interfaces
         void DeleteCars(Cars cars);
         void UpdateCars(Cars cars);
         public Cars GetCarsById(int id);
+        public Cars GetCarWithFeatures(int carId);
         public List<Cars> EditExisting();
         IEnumerable<Cars> GetAllCars();
         IEnumerable<Cars> GetCarsByAvailabilityLocation(int locationId);

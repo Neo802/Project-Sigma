@@ -58,6 +58,11 @@ namespace ProjectRunAway.Services
             _repositoryWrapper.Save();
         }
         */
+        public Cars GetCarWithFeatures(int carId)
+        {
+            return _repositoryWrapper.CarsRepository.GetCarWithFeatures(carId);
+        }
+
         public Cars GetCarsById(int id)
         {
             var cars = _repositoryWrapper.CarsRepository.FindByCondition(cars => cars.CarsId == id).FirstOrDefault();
