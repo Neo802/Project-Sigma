@@ -2,72 +2,11 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = null;
 }
-<link rel="stylesheet" href="~/css/style_general.css" />
 <link rel="stylesheet" href="~/css/style_assurance.css" />
 <body>
     <!--preloader-->
     <!-- Preloader will be implemented here! -->
-
-    <nav>
-        <div class="nav-center">
-            <!-- nav header -->
-            <div class="nav-header">
-                <img src="https://www.dropbox.com/scl/fi/9v0f4t9dj02zy9sdbskro/RunAwayS.png?rlkey=vuqzo83yypktcekhgqosbmuo1&st=ci700b45&dl=1" class="logo" alt="logo can't be accessed" />
-                <button class="nav-toggle">
-                    <i class="fa fa-bars" style="font-size:36px"></i>
-                    <!--a type for menu bar-->
-                </button>
-            </div>
-            <!-- links -->
-            <ul class="links">
-                <li>
-                    <a asp-action="Index" asp-controller="Home">Home</a>
-                </li>
-                <li>
-                    <a asp-action="Index" asp-controller="Cars">Cars</a>
-                </li>
-                <li>
-                    <a asp-action="Index" asp-controller="Locations">Locations</a>
-                </li>
-                <li>
-                    <a asp-action="Login" asp-controller="Users">Log in</a>
-                </li>
-                <li>
-                    <a asp-action="Index" asp-controller="About">About us</a>
-                </li>
-            </ul>
-            <!-- social media -->
-            <ul class="social-icons">
-                <li>
-                    <a href="https://www.twitter.com">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.twitter.com">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.twitter.com">
-                        <i class="fab fa-behance"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.twitter.com">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.twitter.com">
-                        <i class="fab fa-sketch"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
     <!-- List of assurance section -->
     <div class="heading">
@@ -89,7 +28,7 @@
 
                             <div class="item-info">
                                 <header>
-                                    <h3><a href>@item.Category</a></h3>
+                                    <h3><a href="@Url.Action("", "Extra", new { carsId = item.CarsId })">@item.Category</a></h3>
                                     <h3>@item.PriceLiability $</h3>
                                 </header>
                                 <p class="paragraph">
@@ -105,8 +44,6 @@
         </tbody>
     </table>
   
-    <!-- javascript -->
-    <script src="~/js/app_general.js"></script>
 
 
 </body>

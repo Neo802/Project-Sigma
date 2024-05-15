@@ -1,0 +1,63 @@
+﻿@model ProjectRunAway.Models.Extra
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Extra</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ChildSeat" class="control-label"></label>
+                <input asp-for="ChildSeat" class="form-control" />
+                <span asp-validation-for="ChildSeat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfTires" class="control-label"></label>
+                <input asp-for="TypeOfTires" class="form-control" />
+                <span asp-validation-for="TypeOfTires" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkiRack" class="control-label"></label>
+                <input asp-for="SkiRack" class="form-control" />
+                <span asp-validation-for="SkiRack" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WifiHotspot" class="control-label"></label>
+                <input asp-for="WifiHotspot" class="form-control" />
+                <span asp-validation-for="WifiHotspot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SnowChains" class="control-label"></label>
+                <input asp-for="SnowChains" class="form-control" />
+                <span asp-validation-for="SnowChains" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoadsideProtection" class="control-label"></label>
+                <input asp-for="RoadsideProtection" class="form-control" />
+                <span asp-validation-for="RoadsideProtection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarsId" class="control-label"></label>
+                <input asp-for="CarsId" class="form-control" />
+                <span asp-validation-for="CarsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

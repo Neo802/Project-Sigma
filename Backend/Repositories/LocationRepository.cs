@@ -9,5 +9,9 @@ namespace ProjectRunAway.Repositories
             : base(locationContext)
         {
         }
+        public Locations GetLocationById(int id)
+        {
+            return FindByCondition(location => location.LocationsId == id).FirstOrDefault();
+        }
     }
 }

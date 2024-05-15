@@ -32,8 +32,8 @@ namespace ProjectRunAway.Services
 
         public string AddCars(Cars cars)
         {
-            var addCars = _repositoryWrapper.CarsRepository.FindByCondition(c => c.UsersId.Equals(cars.UsersId)).FirstOrDefault();
-            if(addCars != null)
+            var addCars = _repositoryWrapper.CarsRepository;
+            if (addCars != null)
             {
                 _repositoryWrapper.CarsRepository.Create(cars);
                 _repositoryWrapper.Save();

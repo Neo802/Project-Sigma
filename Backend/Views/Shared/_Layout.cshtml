@@ -4,26 +4,78 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProjectRunAway</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style_general.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjectRunAway.styles.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'>
 </head>
 <body>
-    
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ProjectRunAway - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="https://www.dropbox.com/scl/fi/9v0f4t9dj02zy9sdbskro/RunAwayS.png?rlkey=vuqzo83yypktcekhgqosbmuo1&st=ci700b45&dl=1" class="logo" alt="logo can't be accessed" />
+                <button class="nav-toggle">
+                    <i class="fa fa-bars" style="font-size:36px"></i>
+                    <!--a type for menu bar-->
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Cars">Cars</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Locations">Locations</a>
+                </li>
+                
+                <li>
+                    <a asp-action="Index" asp-controller="About">About us</a>
+                </li>
+                
+                    <partial name="_LoginPartial" />
+                
+            </ul>
+            <!-- social media -->
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-sketch"></i>
+                    </a>
+                </li>
+
+            </ul>
+
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    </nav>
+
+    @RenderBody()
+
+    <script src="~/js/app_general.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
