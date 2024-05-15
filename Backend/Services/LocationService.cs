@@ -36,7 +36,7 @@ namespace ProjectRunAway.Services
         }
         public Locations GetLocationById(int id)
         {
-            var location = _repositoryWrapper.LocationRepository.FindByCondition(location => location.LocationsId == id).FirstOrDefault();
+            var location = _repositoryWrapper.LocationRepository.GetLocationById(id);
             if (location == null)
             {
                 return null;
@@ -44,7 +44,7 @@ namespace ProjectRunAway.Services
             return location; // Assuming you want to return the user if found
 
         }
-        public IEnumerable<Locations> GetAllLocations()
+        public List<Locations> GetAllLocations()
         {
             return _repositoryWrapper.LocationRepository.FindAll().ToList();
 

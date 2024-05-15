@@ -24,7 +24,6 @@
             document.getElementById('f10').innerText = data.f10;
             document.getElementById('f11').innerText = data.f11;
             document.getElementById('f12').innerText = data.f12;
-
             document.getElementById('carDetailsModal').style.display = 'flex'; // Show the modal
         })
         .catch(error => {

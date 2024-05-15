@@ -7,6 +7,7 @@
         ICarsRepository CarsRepository { get; }
         ILiabilitiesRepository LiabilitiesRepository { get; }
         IFeaturesRepository FeaturesRepository { get; }
+        IExtraRepository ExtraRepository { get; }
         void Save();
     }
 }

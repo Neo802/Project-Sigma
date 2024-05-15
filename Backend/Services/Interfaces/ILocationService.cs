@@ -9,7 +9,7 @@ namespace ProjectRunAway.Services.Interfaces
         void UpdateLocation(Locations location);
         public Locations GetLocationById(int id);
         public List<Locations> EditExisting();
-        IEnumerable<Locations> GetAllLocations();
+        List<Locations> GetAllLocations();
         public void Save();
     }
 }

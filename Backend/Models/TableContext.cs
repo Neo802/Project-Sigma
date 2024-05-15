@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using ProjectRunAway.Models;
 namespace ProjectRunAway.Models
 {
-    public class TableContext : DbContext
+    public class TableContext : IdentityDbContext<IdentityUser>
 
     {
 
@@ -16,9 +19,10 @@ namespace ProjectRunAway.Models
         public DbSet<Features> Features { get; set; }
         public DbSet<Locations> Locations { get; set; }
         public DbSet<Availability> Availability { get; set; }
-
+        public DbSet<Extra> Extra { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Availability>()
                 .HasKey(sc => new { sc.CarsId, sc.LocationsId });
 

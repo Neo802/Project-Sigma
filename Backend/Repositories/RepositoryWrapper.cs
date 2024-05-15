@@ -12,6 +12,7 @@ namespace ProjectRunAway.Repositories
         private ICarsRepository? _carsRepository;
         private ILiabilitiesRepository? _liabilitiesRepository;
         private IFeaturesRepository? _featuresRepository;
+        private IExtraRepository? _extraRepository;
 
         public IAvailabilityRepository AvailabilityRepository
         {
@@ -76,7 +77,18 @@ namespace ProjectRunAway.Repositories
                 return _featuresRepository;
             }
         }
+        public IExtraRepository ExtraRepository
+        {
+            get
+            {
+                if (_extraRepository == null)
+                {
+                    _extraRepository = new ExtraRepository(_Context);
+                }
 
+                return _extraRepository;
+            }
+        }
         public RepositoryWrapper(TableContext locationContext)
         {
             _Context = locationContext;
