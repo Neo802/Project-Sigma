@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectRunAway.Models;
-using ProjectRunAway.Services;
 using ProjectRunAway.Services.Interfaces;
 
 namespace ProjectRunAway.Controllers
@@ -19,7 +18,6 @@ namespace ProjectRunAway.Controllers
         {
             _featuresService = featuresService;
         }
-
         // GET: Features
         public IActionResult Index()
         {

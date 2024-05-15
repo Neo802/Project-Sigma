@@ -14,8 +14,9 @@
         public string? Doors { get; set; }
         public float? PriceCar { get; set; }
         public float? TankCapacity { get; set; }
-        public int UsersId { get; set; }
-        public Users? Users { get; set; }
+     /*   public int Id { get; set; }
+        public User? Users { get; set; }*/
+        public ICollection<Orders>? Orders { get; set; }
         public ICollection<Availability>? Availability { get; set; }
         public ICollection<Liability>? Liability { get; set; }
         public ICollection<Features>? Features { get; set; }

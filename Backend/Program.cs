@@ -7,15 +7,13 @@ using ProjectRunAway.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-       .AddRoles<IdentityRole>()
-       .AddEntityFrameworkStores<TableContext>();
-builder.Services.AddDbContext<TableContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectRunAway")));
-
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<TableContext>();
+builder.Services.AddDbContext<TableContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectRunAway")));
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<ICarsRepository, CarsRepository>();
@@ -43,9 +41,10 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Lockout.MaxFailedAccessAttempts = 10;
     options.Lockout.AllowedForNewUsers = true;
 
-    // User Settings
+    // User settings
     options.User.RequireUniqueEmail = true;
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

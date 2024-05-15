@@ -3,34 +3,57 @@
 
 @{
     ViewData["Title"] = "Log in";
+    Layout = null; 
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectRunAway</title>
+    <link rel="stylesheet" href="~/css/style_login&create_Account.css" asp-append-version="true" />/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'>
+</head>
+<body>
+<!--preloader-->
+<!--will be implemented-->
+<!--header-->
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <label asp-for="Input.Email" class="form-label">Email</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+<header>
+    <video class="video-container" muted autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/pm3fkw7z95s8jqm01grk5/video_logare.mp4?rlkey=xp70g1sad2wh6hwmy7ulzrki0&dl=1" type="video/mp4" />
+    </video>
+</header>
+@* <h1>@ViewData["Title"]</h1> *@
+  <div class="wrapper-login">
+   
+    @* <section> *@
+
+          <form id="account" method="post">
+            <img src="https://www.dropbox.com/scl/fi/9v0f4t9dj02zy9sdbskro/RunAwayS.png?rlkey=vuqzo83yypktcekhgqosbmuo1&st=ci700b45&dl=1" class="logo" alt="Logo here" />
+            <h1>Login</h1>
+                <div asp-validation-summary="ModelOnly" role="alert"></div>
+                <div class="input-box">
+              @*       <label asp-for="Input.Email">Email</label> *@
+                    <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email"></span>
+                    <i class='bx bx-user'></i>
                 </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <div class="input-box">
+                   @*  <label asp-for="Input.Password">Password</label> *@
+                    <input asp-for="Input.Password" id="password" autocomplete="current-password" aria-required="true" placeholder="password" />   
+                    <span asp-validation-for="Input.Password"></span>
+                   <i class="fa-solid fa-eye" id="show-password"></i>
                 </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                <div class="remember-forgot">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                <button id="login-submit" type="submit" class="btn">Log in</button>
                 </div>
                 <div>
                     <p>
@@ -44,9 +67,10 @@
                     </p>
                 </div>
             </form>
-        </section>
+        </div>
+      @*  </section> *@
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    @* <div class="col-md-6 col-md-offset-2">
         <section>
             <h3>Use another service to log in.</h3>
             <hr />
@@ -75,9 +99,13 @@
                 }
             }
         </section>
-    </div>
+    </div> *@
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    
 }
+    <script src="~/js/app_login_create_Account.js"></script>
+</body>
+</html>

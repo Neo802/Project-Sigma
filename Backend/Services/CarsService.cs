@@ -32,8 +32,8 @@ namespace ProjectRunAway.Services
 
         public string AddCars(Cars cars)
         {
-            var addCars = _repositoryWrapper.CarsRepository.FindByCondition(c => c.UsersId.Equals(cars.UsersId)).FirstOrDefault();
-            if(addCars != null)
+            var addCars = _repositoryWrapper.CarsRepository;
+            if (addCars != null)
             {
                 _repositoryWrapper.CarsRepository.Create(cars);
                 _repositoryWrapper.Save();
@@ -58,11 +58,6 @@ namespace ProjectRunAway.Services
             _repositoryWrapper.Save();
         }
         */
-        public Cars GetCarWithFeatures(int carId)
-        {
-            return _repositoryWrapper.CarsRepository.GetCarWithFeatures(carId);
-        }
-
         public Cars GetCarsById(int id)
         {
             var cars = _repositoryWrapper.CarsRepository.FindByCondition(cars => cars.CarsId == id).FirstOrDefault();
@@ -71,6 +66,7 @@ namespace ProjectRunAway.Services
                 return null;
             }
             return cars; // Assuming you want to return the user if found
+
         }
         public IEnumerable<Cars> GetAllCars()
         {
