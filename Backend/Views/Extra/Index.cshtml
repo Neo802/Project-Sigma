@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ProjectRunAway.Models.Extra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/style_extra.css" />
+<body>
+    <!--preloader-->
+    <!-- Preloader will be implemented here! -->
+
+    <!-- List of assurance section -->
+    <div class="heading">
+        <span><p>Do you want some extra features?</p></span>
+        <h2>We have for you some extra features for this car</h2>
+        <p class="paragraph">Choose your extra features!</p>
+    </div>
+
+
+
+    <ul class = "list">
+        @foreach(var item in Model)
+        {
+            <li class="item">@Html.DisplayFor(modelItem => item.ChildSeat)</li>
+            <li class="item">@Html.DisplayFor(modelItem => item.TypeOfTires)</li>
+            <li class="item">@Html.DisplayFor(modelItem => item.SkiRack)</li>
+            <li class="item">@Html.DisplayFor(modelItem => item.WifiHotspot)</li>
+            <li class="item">@Html.DisplayFor(modelItem => item.SnowChains)</li>
+            <li class="item">@Html.DisplayFor(modelItem => item.RoadsideProtection)</li>
+        }
+    </ul>
+
+
+
+</body>
+

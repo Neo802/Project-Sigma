@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
+<<<<<<< Updated upstream
 
 <h1>Index</h1>
 
@@ -51,3 +52,49 @@
 }
     </tbody>
 </table>
+=======
+<link rel="stylesheet" href="~/css/style_assurance.css" />
+<body>
+    <!--preloader-->
+    <!-- Preloader will be implemented here! -->
+
+    <!-- List of assurance section -->
+    <div class="heading">
+        <span><p>No stress while driving?</p></span>
+        <h1>Can you try our assurance</h1>
+        <p class="paragraph">Limits your financial liability for accidental damage to the rental vehicle</p>
+    </div>
+
+
+
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <div class="section-center">
+                        <article class="menu-item">
+
+                            <div class="item-info">
+                                <header>
+                                    <h3><a href="@Url.Action("", "Extra", new { carsId = item.CarsId })">@item.Category</a></h3>
+                                    <h3>@item.PriceLiability $</h3>
+                                </header>
+                                <p class="paragraph">
+                                    @item.About
+                                </p>
+                            </div>
+        
+                        </article>
+                    </div>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+  
+
+
+</body>
+>>>>>>> Stashed changes

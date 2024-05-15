@@ -4,7 +4,50 @@
     ViewData["Title"] = "Index";
 }
 
+<<<<<<< Updated upstream
 <h1>Index</h1>
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RunAway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="~/css/style_location.css" />
+</head>
+<body>
+    <!--preloader-->
+
+    <!-- List of locations section -->
+    <section class="services" id="services">
+        <div class="heading">
+            <span><p>Big Cities</p></span>
+            <h1>See our locations</h1>
+        </div>
+        <div class="services-container">
+            @foreach (var item in Model)
+            {
+                <div class="box">
+                    <div class="box-img">
+                        <img src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" />
+                    </div>
+                    <p>Cars: @Html.DisplayFor(modelItem => item.CarsAvailable)</p>
+                    <h3>@Html.DisplayFor(modelItem => item.City)</h3>
+                    @* <a asp-action="Details" asp-route-id="@item.LocationsId" class="btn">View cars here</a> *@
+                    <a href="@Url.Action("Index", "Cars", new { locationId = item.LocationsId })" class="btn">View Cars here</a>
+                    @* <a asp-action="Details" asp-route-id="@item.LocationsId" class="btn">View cars here</a> *@
+                </div>
+            }
+        </div>
+    </section>
+    <!-- javascript -->
+    <script src="~/js/app_location.js"></script>
+</body>
+</html>
+
+
+>>>>>>> Stashed changes
 
 <p>
     <a asp-action="Create">Create New</a>

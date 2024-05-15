@@ -95,5 +95,93 @@ namespace ProjectRunAway.Controllers
         {
             return _context.Cars.Any(e => e.CarsId == id);
         }
+<<<<<<< Updated upstream
+=======
+
+        // POST: Cars/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
+        {
+            if (ModelState.IsValid)
+            {
+                _carsServices.AddCars(cars);
+                //_carsServices.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cars);
+        }
+
+        // GET: Cars/Edit/5
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cars = _carsServices.EditExisting().FirstOrDefault(m => m.CarsId == id);
+            if (cars == null)
+            {
+                return NotFound();
+            }
+            return View(cars);
+        }
+
+        // POST: Cars/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
+        {
+            if (id != cars.CarsId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _carsServices.UpdateCars(cars);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cars);
+        }
+
+        // GET: Cars/Delete/5
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cars = _carsServices.GetCarsById(id.Value);
+
+            if (cars == null)
+            {
+                return NotFound();
+            }
+
+            return View(cars);
+        }
+
+        // POST: Cars/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var cars = _carsServices.GetCarsById(id);
+            if (cars != null)
+            {
+                _carsServices.DeleteCars(cars);
+                //_carsServices.Save();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+>>>>>>> Stashed changes
     }
 }
