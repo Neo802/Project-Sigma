@@ -27,7 +27,10 @@
 
             document.getElementById('carDetailsModal').style.display = 'flex'; // Show the modal
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to fetch car details');
+        });
 }
 
 function closeModal() {
