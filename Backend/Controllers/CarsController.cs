@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using NuGet.Versioning;
 using ProjectRunAway.Models;
 using ProjectRunAway.Services;
 using ProjectRunAway.Services.Interfaces;
@@ -16,54 +15,14 @@ namespace ProjectRunAway.Controllers
             _carsServices = carsServices;
         }
         
-        //public IActionResult GetCarDetails(int id)
-        //{
-        //    var car = _carsServices.GetCarsById(id);  // Make sure you have a method to fetch car by ID
-        //    if (car == null)
-        //        return NotFound();
-
-        //    if (car.Features == null)
-        //        return NotFound();
-
-        //    var Features = car.Features.FirstOrDefault();
-
-        //    return Json(Features);
-        //}
-
         public IActionResult GetCarDetails(int id)
         {
-            var car = _carsServices.GetCarWithFeatures(id);
+            var car = _carsServices.GetCarsById(id);  // Make sure you have a method to fetch car by ID
             if (car == null)
                 return NotFound();
 
-            var result = new
-            {
-                manufacturer = car.Manufacturer,
-                model = car.Model,
-                description = car.Description,
-                image = car.Image,
-
-                fuel = car.Fuel,
-                tankcapacity = car.TankCapacity,
-                gear = car.Gear,
-
-                f1 = car.Features.Select(g => g.VirtualCockpit).FirstOrDefault(),
-                f2 = car.Features.Select(g => g.HorsePower).FirstOrDefault(),
-                f3 = car.Features.Select(g => g.SunRoof).FirstOrDefault(),
-                f4 = car.Features.Select(g => g.CilindricalCapacity).FirstOrDefault(),
-                f5 = car.Features.Select(g => g.HeadLights).FirstOrDefault(),
-                f6 = car.Features.Select(g => g.HeadtedSeats).FirstOrDefault(),
-                f7 = car.Features.Select(g => g.AC).FirstOrDefault(),
-                f8 = car.Features.Select(g => g.MaterialOfTheSeats).FirstOrDefault(),
-                f9 = car.Features.Select(g => g.Navigation).FirstOrDefault(),
-                f10 = car.Features.Select(g => g.SteeringWheelHeating).FirstOrDefault(),
-                f11 = car.Features.Select(g => g.TypeSeats).FirstOrDefault(),
-                f12 = car.Features.Select(g => g.VentilatedSeats).FirstOrDefault(),
-            };
-
-            return Json(result);
+            return Json(car);
         }
-
         public ActionResult AdminCars()
         {
             var locations = _carsServices.GetAllCars();
@@ -164,7 +123,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity,UsersId")] Cars cars)
+        public IActionResult Create([Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
         {
             if (ModelState.IsValid)
             {
@@ -196,7 +155,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity,UsersId")] Cars cars)
+        public IActionResult Edit(int id, [Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
         {
             if (id != cars.CarsId)
             {

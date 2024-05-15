@@ -9,17 +9,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using ProjectRunAway.Models;
 
 namespace ProjectRunAway.Areas.Identity.Pages.Account.Manage
 {
     public class GenerateRecoveryCodesModel : PageModel
     {
-        private readonly UserManager<Users> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<GenerateRecoveryCodesModel> _logger;
 
         public GenerateRecoveryCodesModel(
-            UserManager<Users> userManager,
+            UserManager<IdentityUser> userManager,
             ILogger<GenerateRecoveryCodesModel> logger)
         {
             _userManager = userManager;

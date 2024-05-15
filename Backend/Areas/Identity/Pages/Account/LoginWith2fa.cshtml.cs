@@ -11,19 +11,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using ProjectRunAway.Models;
 
 namespace ProjectRunAway.Areas.Identity.Pages.Account
 {
     public class LoginWith2faModel : PageModel
     {
-        private readonly SignInManager<Users> _signInManager;
-        private readonly UserManager<Users> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginWith2faModel> _logger;
 
         public LoginWith2faModel(
-            SignInManager<Users> signInManager,
-            UserManager<Users> userManager,
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
             ILogger<LoginWith2faModel> logger)
         {
             _signInManager = signInManager;
@@ -113,17 +112,17 @@ namespace ProjectRunAway.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.UsersId);
+                _logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
                 return LocalRedirect(returnUrl);
             }
             else if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.UsersId);
+                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.UsersId);
+                _logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
                 ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
                 return Page();
             }

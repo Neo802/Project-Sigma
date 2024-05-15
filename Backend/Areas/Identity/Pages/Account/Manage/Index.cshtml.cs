@@ -9,18 +9,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ProjectRunAway.Models;
 
 namespace ProjectRunAway.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<Users> _userManager;
-        private readonly SignInManager<Users> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
         public IndexModel(
-            UserManager<Users> userManager,
-            SignInManager<Users> signInManager)
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -61,7 +60,7 @@ namespace ProjectRunAway.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(Users user)
+        private async Task LoadAsync(IdentityUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

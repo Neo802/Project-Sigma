@@ -16,7 +16,6 @@
 <body>
     <!--preloader-->
     <!-- Preloader will be implemented here! -->
-  
 
     <!-- List of cars section with filtering -->
     <div class="select-menu">
@@ -63,116 +62,34 @@
     </div>
   
     <div class="section-center">
-        @foreach (var item in Model)
-        {
-            <article class="menu-item">
-                <a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })"><img style="height: 100%; border-radius: 1rem" src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" class="photo" alt="Image of @item.Model" /></a>
-                <div class="item-info">
-                    <header>
-                        <h3>@item.Manufacturer</h3>
-                        <h3 class="year">@item.Model</h3>
-                    </header>
-                    <h4>
-                        <i class="fa-solid fa-car"></i> @item.Type
-                        <i class="fa-solid fa-person"></i> @item.Seats
-                        <i class="fa-solid fa-gas-pump"></i> @item.Fuel
-                        <i class="fa-solid fa-euro-sign"></i> @item.PriceCar/day
-                    </h4>
-                    <p class="description" style="height: 50px; overflow: hidden; text-overflow: ellipsis;">
-                        @item.Description
-                    </p>
-                    <button onclick="showCarDetails(@item.CarsId)">Show More</button>
-                </div>
-            </article>
-        }
+    @foreach (var item in Model)
+    {
+        <article class="menu-item">
+                <a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })"><img src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" class="photo" alt="Image of @item.Model" /></a>
+            <div class="item-info">
+                <header>
+                    <h3>@item.Manufacturer</h3>
+                    <h3 class="year">@item.Model</h3>
+                </header>
+                <h4>
+                    <i class="fa-solid fa-car"></i> @item.Type
+                    <i class="fa-solid fa-person"></i> @item.Seats
+                    <i class="fa-solid fa-gas-pump"></i> @item.Fuel
+                    <i class="fa-solid fa-euro-sign"></i> @item.PriceCar/day
+                </h4>
+                <p class="description">
+                    @item.Description
+                </p>
+                <button onclick="showCarDetails(@item.CarsId)">Show More</button>
+            </div>
+        </article>
+    }
     </div>
 
     <!-- Modal Structure -->
     <div id="carDetailsModal" class="modal" style="display:none;">
         <div class="modal-content">
-            <ul>
-                <li>
-                    <b style="font-size:30">
-                        <span id="carName"></span>
-                    </b>
-                    <span> </span>
-                    <span style="font-size:30" id="carModel"></span>
-                </li>
-                <li>
-                    <img id="carImage">
-                </li>
-                <li>
-                    <span>Description: </span>
-                    <span id="carDetails"></span>
-                </li>
-
-                <span>This car is equipped with: </span>
-                <ul style="list-style:disc; padding-inline-start: 20px;">
-                    <li>
-                        <span id="fuel"></span>
-                        <span> Fuel</span>
-                    </li>
-                    <li>
-                        <span id="fuelCapacity"></span>
-                        <span> Liters Capacity</span>
-                    </li>
-                    <li>
-                        <span id="gearType"></span>
-                        <span> Gear System</span>
-                    </li>
-                    @* Features *@
-
-                    <li>
-                        <span>Horsepower: </span>
-                        <span id="f2"></span>
-                    </li>
-                    <li>
-                        <span>Sunroof: </span>
-                        <span id="f3"></span>
-                    </li>
-                    <li>
-                        <span>Virtual Cockpit: </span>
-                        <span id="f1"></span>
-                    </li>
-                    <li>
-                        <span>Cylindrical capacity: </span>
-                        <span id="f4"></span>
-                    </li>
-                    <li>
-                        <span>Headlights: </span>
-                        <span id="f5"></span>
-                    </li>
-                    <li>
-                        <span>Heated seats: </span>
-                        <span id="f6"></span>
-                    </li>
-                    <li>
-                        <span>Ventilated seats: </span>
-                        <span id="f12"></span>
-                    </li>
-                    <li>
-                        <span>Seats type: </span>
-                        <span id="f11"></span>
-                    </li>
-                    <li>
-                        <span>Seats material: </span>
-                        <span id="f8"></span>
-                    </li>
-                    <li>
-                        <span>Steering wheel heating: </span>
-                        <span id="f10"></span>
-                    </li>
-                    <li>
-                        <span>Air conditioner: </span>
-                        <span id="f7"></span>
-                    </li>
-                    <li>
-                        <span>Navigation: </span>
-                        <span id="f9"></span>
-                    </li>
-
-                </ul>
-            </ul>
+            <span id="carDetails"></span>
             <button onclick="closeModal()">Close</button>
         </div>
         <div class="modal-overlay" onclick="closeModal()"></div>
@@ -195,7 +112,6 @@
             padding: 20px;
             border-radius: 5px;
             z-index: 1000;
-            width: 30%;
         }
 
         .modal-overlay {

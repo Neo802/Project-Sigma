@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - ProjectRunAway</title>
     <link rel="stylesheet" href="~/css/style_general.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjectRunAway.styles.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'>
 </head>
 <body>
 
@@ -30,12 +32,13 @@
                 <li>
                     <a asp-action="Index" asp-controller="Locations">Locations</a>
                 </li>
-                <li>
-                    <a asp-action="Login" asp-controller="Users">Log in</a>
-                </li>
+                
                 <li>
                     <a asp-action="Index" asp-controller="About">About us</a>
                 </li>
+                
+                    <partial name="_LoginPartial" />
+                
             </ul>
             <!-- social media -->
             <ul class="social-icons">
@@ -64,19 +67,14 @@
                         <i class="fab fa-sketch"></i>
                     </a>
                 </li>
+
             </ul>
-            <partial name="_LoginPartial"/>
+
         </div>
     </nav>
- 
-     @RenderBody()
-      
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ProjectRunAway - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    @RenderBody()
+
     <script src="~/js/app_general.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

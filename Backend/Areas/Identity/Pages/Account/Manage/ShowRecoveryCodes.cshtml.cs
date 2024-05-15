@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using ProjectRunAway.Models;
 
 namespace ProjectRunAway.Areas.Identity.Pages.Account.Manage
 {
