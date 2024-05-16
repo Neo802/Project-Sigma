@@ -23,8 +23,19 @@ namespace ProjectRunAway.Services
                 return string.Empty;
             }
             return "The extra doesnt exist";
-
         }
+        public string AddOrder(Orders orders)
+        {
+            var addOrders = _repositoryWrapper.CarsRepository.FindByCondition(c => c.CarsId.Equals(orders.CarsId)).FirstOrDefault();
+            if (addOrders != null)
+            {
+                _repositoryWrapper.OrdersRepository.Create(orders);
+                _repositoryWrapper.Save();
+                return string.Empty;
+            }
+            return "The extra doesnt exist";
+        }
+
         public void DeleteExtra(Extra extra)
         {
             _repositoryWrapper.ExtraRepository.Delete(extra);

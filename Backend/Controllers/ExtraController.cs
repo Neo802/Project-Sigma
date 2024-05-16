@@ -37,8 +37,13 @@ namespace ProjectRunAway.Controllers
             return View();
         }
         
-        public IActionResult ConfirmOrder()
+        public IActionResult ConfirmOrder([Bind("OrderId, UserId, CarsId")] Orders orders)
         {
+            if (ModelState.IsValid)
+            {
+                _extraService.AddOrder(orders);
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
         
