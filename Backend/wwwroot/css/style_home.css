@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 /* Style for home page*/
-
+body {
+    background: url(https://cdn.discordapp.com/attachments/1165566401814212670/1240708897610793110/mclaren-supercars-silver-cars-car-vehicle-hd-wallpaper-preview.jpg?ex=66478bb4&is=66463a34&hm=9e60b3b04f7fa2c664be952c077ba79e0c6d01701e264912f5c4b4cdc384a064&);
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .home {
     width: 100%;
     min-height: 100vh;
@@ -77,6 +81,7 @@
     font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.5s ease-in-out;
+    margin-top: 35px;
 }
 
     .form-container form .btn:hover {

@@ -3,33 +3,142 @@
 @{
     ViewData["Title"] = "Index";
 }
-<link rel="stylesheet" href="~/css/style_extra.css" />
-<body>
-    <!--preloader-->
-    <!-- Preloader will be implemented here! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style_extra.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        .heading {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            color: #333;
+        }
+
+            .heading p {
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .heading h2 {
+                margin: 10px 0;
+                font-size: 24px;
+            }
+
+        .list {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+            .list li {
+                background: white;
+                margin: 10px 0;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .list label {
+                font-size: 16px;
+                flex-grow: 1;
+                margin-right: 20px;
+            }
+
+            .list input[type="checkbox"] {
+                transform: scale(1.5);
+                margin-left: 20px; /* More separation between words and checkbox */
+            }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background-color: #008080; /* Teal color to match the image */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .btn:hover {
+                background-color: #006666; /* Darker teal on hover */
+            }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <!-- Preloader will be implemented here! -->
     <!-- List of assurance section -->
     <div class="heading">
-        <span><p>Do you want some extra features?</p></span>
+        <p>Do you want some extra features?</p>
         <h2>We have for you some extra features for this car</h2>
         <p class="paragraph">Choose your extra features!</p>
     </div>
 
-
-
-    <ul class = "list">
-        @foreach(var item in Model)
+    <ul class="list">
+        @foreach (var item in Model)
         {
-            <li class="item">@Html.DisplayFor(modelItem => item.ChildSeat)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.TypeOfTires)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.SkiRack)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.WifiHotspot)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.SnowChains)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.RoadsideProtection)</li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.ChildSeat)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.TypeOfTires)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.SkiRack)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.WifiHotspot)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.SnowChains)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.RoadsideProtection)
+                </label>
+                <input type="checkbox" />
+            </li>
         }
     </ul>
 
-
-
+    <div class="button-container">
+        <a href="@Url.Action("DataCustomer", "Extra")" class="btn">Next</a>
+    </div>
 </body>
-
+</html>
