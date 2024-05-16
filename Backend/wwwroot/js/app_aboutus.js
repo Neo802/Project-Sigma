@@ -1,17 +1,21 @@
-/*JavaScript for AbousUs page*/ 
+// scripts.js
+document.addEventListener('DOMContentLoaded', function () {
+    var faqQuestions = document.querySelectorAll('.faq-question');
 
-/* show-hide text implementation */
-var x = 0;
-function showHide(){
-    if(x==0){
-        document.getElementById('hide').style='display:block';
-        document.getElementById('switch-text').innerText='Read less';
-        x = 1;
-    }
-    else{
-        document.getElementById('hide').style='display:none';
-        document.getElementById('switch-text').innerText='Read more';
-        x = 0;
-    }
-}
-/* end of show-hide text implementation */
+    faqQuestions.forEach(function (question) {
+        question.addEventListener('click', function () {
+            var answer = this.nextElementSibling;
+            var isOpen = answer.classList.contains('open');
+
+            // Close all answers
+            document.querySelectorAll('.faq-answer').forEach(function (answer) {
+                answer.classList.remove('open');
+            });
+
+            // Toggle the clicked answer
+            if (!isOpen) {
+                answer.classList.add('open');
+            }
+        });
+    });
+});
