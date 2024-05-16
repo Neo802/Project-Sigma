@@ -25,6 +25,35 @@ namespace ProjectRunAway.Services
             return cars;
         }
 
+        public IEnumerable<Cars> GetCarsByAvailabilityLocationName(string locationName)
+        {
+            IQueryable<Availability> filteredAvailabilities = _repositoryWrapper.AvailabilityRepository
+            .FindByCondition(a => a.Locations.City == locationName);
+            // Now, fetch the cars based on the availabilities. This presumes that the Availability entity
+            // has a navigation property 'Car' that can be used to directly access related car data.
+            IEnumerable<Cars> cars = filteredAvailabilities
+                .Select(a => a.Cars)
+                .Distinct()  // Remove duplicates if a car is linked to multiple availabilities
+                .ToList();   // Execute the query and convert the results to a list
+
+            return cars;
+        }
+
+        public Availability GetAvailabilityByCarId(int carId)
+        {
+            var availability = _repositoryWrapper.AvailabilityRepository.FindByCondition(g => g.CarsId == carId).FirstOrDefault();
+            if (availability == null)
+            {
+                return null;
+            }
+            return availability; // Assuming you want to return the user if found
+        }
+
+        public IEnumerable<Availability> GetAvailabilities()
+        {
+            return _repositoryWrapper.AvailabilityRepository.FindAll().ToList();
+        }
+
         public CarsService(IRepositoryWrapper repositoryWrapper)
         {
             _repositoryWrapper = repositoryWrapper;

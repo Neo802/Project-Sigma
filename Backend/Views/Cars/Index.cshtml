@@ -56,6 +56,7 @@
 
                 <button type="submit" class="btn-primary" name="sortType" value=1>Show by Increasing</button>
                 <button type="submit" class="btn-primary" name="sortType" value=2>Show by Decreasing</button>
+
                 <button type="submit" class="btn-primary">Filter</button>
             </ul>
         </form>
@@ -64,6 +65,7 @@
     <div class="section-center">
     @foreach (var item in Model)
     {
+
         <article class="menu-item">
                 <a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })"><img src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" class="photo" alt="Image of @item.Model" /></a>
             <div class="item-info">
@@ -77,6 +79,7 @@
                     <i class="fa-solid fa-gas-pump"></i> @item.Fuel
                     <i class="fa-solid fa-euro-sign"></i> @item.PriceCar/day
                 </h4>
+
                 <p class="description">
                     @item.Description
                 </p>

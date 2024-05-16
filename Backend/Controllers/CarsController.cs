@@ -5,6 +5,7 @@ using ProjectRunAway.Models;
 using ProjectRunAway.Services;
 using ProjectRunAway.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using ProjectRunAway.Repositories.Interfaces;
 
 namespace ProjectRunAway.Controllers
 {
@@ -30,18 +31,28 @@ namespace ProjectRunAway.Controllers
             var locations = _carsServices.GetAllCars();
             return View(locations);
         }
-        public IActionResult Index(int locationId, string carMake, string carModel, string searchText, float priceMin, float priceMax, string fuelType, string bodyType, string seating, int sortType)
+        public IActionResult Index(string location, DateOnly? pickupDate, DateOnly? returnDate, string carMake, string carModel, string searchText, float priceMin, float priceMax, string fuelType, string bodyType, string seating, int sortType)
         {
-            IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
+            IQueryable<Cars> query = _carsServices.GetCarsByAvailabilityLocationName(location).AsQueryable();
             
-            if ((query == null || !query.Any()) && locationId == 0)
+            if ((query == null || !query.Any()) && string.IsNullOrEmpty(location))
             {
                 query = _carsServices.GetAllCars().AsQueryable();
             }
           
-            if ((query == null || !query.Any())  && locationId != 0)
+            if ((query == null || !query.Any())  && !string.IsNullOrEmpty(location))
             {
-                query = _carsServices.GetCarsByAvailabilityLocation(locationId).AsQueryable();
+                query = _carsServices.GetCarsByAvailabilityLocationName(location).AsQueryable();
+            }
+
+            if (pickupDate.HasValue && returnDate.HasValue)
+            {
+                var availableCarIds = _carsServices.GetAvailabilities()
+                    .Where(a => a.DateStart <= pickupDate.Value && a.DateEnd >= returnDate.Value)
+                    .Select(a => a.CarsId)
+                    .Distinct();
+
+                query = query.Where(car => availableCarIds.Contains(car.CarsId));
             }
 
             if (!string.IsNullOrEmpty(carMake))
@@ -92,7 +103,7 @@ namespace ProjectRunAway.Controllers
             {
                 return View(query.ToList().OrderByDescending(c => c.PriceCar));
             }
-           
+
             return View(query.ToList());
         }
 
@@ -206,6 +217,13 @@ namespace ProjectRunAway.Controllers
                 //_carsServices.Save();
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        public class CarViewModel
+        {
+            public Cars Car { get; set; }
+            public DateOnly? PickupDate { get; set; }
+            public DateOnly? ReturnDate { get; set; }
         }
 
     }
