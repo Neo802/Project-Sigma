@@ -32,6 +32,10 @@ namespace ProjectRunAway.Controllers
             var locations = _extraService.GetAllExtras();
             return View(locations);
         }
+        public IActionResult DataCustomer()
+        {
+            return View();
+        }
         // GET: Extra/Details/5
         [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
