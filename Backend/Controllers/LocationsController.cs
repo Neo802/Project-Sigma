@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Details/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Details(int locationId)
         {
             var cars = _locationService.GetAllLocations();
@@ -39,12 +41,14 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
         }
 
         // GET: Locations/AdminLocation
+        [Authorize(Roles = "Administrator")]
         public ActionResult AdminLocation()
         {
             var locations = _locationService.GetAllLocations();
@@ -69,6 +73,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -107,6 +112,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Delete/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null)

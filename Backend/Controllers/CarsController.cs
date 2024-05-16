@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using ProjectRunAway.Models;
 using ProjectRunAway.Services;
 using ProjectRunAway.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectRunAway.Controllers
 {
@@ -23,6 +24,7 @@ namespace ProjectRunAway.Controllers
 
             return Json(car);
         }
+        [Authorize(Roles = "Administrator")]
         public ActionResult AdminCars()
         {
             var locations = _carsServices.GetAllCars();
@@ -95,6 +97,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Cars/Details/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -113,6 +116,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Cars/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -135,6 +139,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Cars/Edit/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -171,6 +176,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Cars/Delete/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
