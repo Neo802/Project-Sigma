@@ -1,13 +1,25 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using System.Text.RegularExpressions
 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+@{
+    string userName = "Guest"; // Default value in case of null
+    if (SignInManager.IsSignedIn(User))
+    {
+        var email = UserManager.GetUserName(User);
+        if (!string.IsNullOrEmpty(email))
+        {
+            userName = Regex.Match(email, @"^[^@]+").Value;
+        }
+    }
+}
 
 @if (SignInManager.IsSignedIn(User))
 {
     <li>
-        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userName!</a>
     </li>
     <li>
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities
+        [Authorize(Roles = "Administrator")]
         public IActionResult AdminLiabilities()
         {
             var liability = _liabilityService.GetAllLiabilities();
@@ -38,6 +40,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Details/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -55,6 +58,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -78,6 +82,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Edit/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -118,6 +123,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Delete/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
