@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Confirm Order";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style_extra.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .heading {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            color: #333;
+        }
+
+            .heading p {
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .heading h2 {
+                margin: 10px 0;
+                font-size: 24px;
+            }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #008080; /* Teal color to match the image */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .btn:hover {
+                background-color: #006666; /* Darker teal on hover */
+            }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <!-- Preloader will be implemented here! -->
+    <!-- Confirm Order section -->
+    <div class="heading">
+        <h2>Your Order is Confirmed!</h2>
+        <p>Thank you for renting a car with us. Your order has been successfully confirmed.</p>
+    </div>
+
+    <div class="form-container">
+        <a href="@Url.Action("Index", "Home")" class="btn">Go to Home Page</a>
+    </div>
+</body>
+</html>
