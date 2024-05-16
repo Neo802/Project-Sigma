@@ -6,6 +6,7 @@ namespace ProjectRunAway.Services.Interfaces
     public interface IExtraService
     {
         string AddExtra(Extra extra);
+        string AddOrder(Orders orders);
         void DeleteExtra(Extra extra);
         void UpdateExtra(Extra extra);
         public Extra GetExtraById(int id);
