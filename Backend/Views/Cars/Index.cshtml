@@ -83,7 +83,7 @@
                 <p class="description">
                     @item.Description
                 </p>
-                <button onclick="showCarDetails(@item.CarsId)">Show More</button>
+                <button onclick="showCarDetails(@item.CarsId)" class="btn">Show More</button>
             </div>
         </article>
     }
@@ -93,7 +93,7 @@
     <div id="carDetailsModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span id="carDetails"></span>
-            <button onclick="closeModal()">Close</button>
+            <button onclick="closeModal()" class="btn">Close</button>
         </div>
         <div class="modal-overlay" onclick="closeModal()"></div>
     </div>
