@@ -76,7 +76,7 @@
     </div>
 
     <div class="form-container">
-        <a href="/YourDestinationPage" class="btn">Confirm your rent</a>
+            <a href="@Url.Action("ConfirmOrder", "Extra")" class="btn">Confirm your rent</a>
     </div>
 </body>
 </html>
@@ -168,7 +168,7 @@ else
         </div>
 
         <div class="form-container">
-            <form action="/YourFormAction" method="post">
+            <form action="@Url.Action("ConfirmOrder", "Extra")" method="post">
                 <label for="phone">Phone Number</label>
                 <input type="text" id="phone" name="phone" required>
 
