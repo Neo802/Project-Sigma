@@ -73,16 +73,6 @@
             .btn-custom:hover {
                 background-color: #006666; /* Darker teal */
             }
-
-        .nav-pills .nav-link {
-            color: #008080;
-            border-radius: 0;
-        }
-
-            .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-                color: #fff;
-                background-color: #008080;
-            }
     </style>
 </head>
 <body>
@@ -94,13 +84,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-3">
-                <nav class="nav flex-column nav-pills">
-                    <a class="nav-link active" href="#">Profile</a>
-                    <a class="nav-link" href="#">Email</a>
-                    <a class="nav-link" href="#">Password</a>
-                    <a class="nav-link" href="#">Two-factor authentication</a>
-                    <a class="nav-link" href="#">Personal data</a>
-                </nav>
+                <partial name="_ManageNav" />
             </div>
             <div class="col-md-9">
                 @RenderBody()
