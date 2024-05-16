@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,12 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Details/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Details(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Details(int locationId)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {
@@ -43,11 +49,24 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
         }
 
+<<<<<<< Updated upstream
+=======
+        // GET: Locations/AdminLocation
+        [Authorize(Roles = "Administrator")]
+        public ActionResult AdminLocation()
+        {
+            var locations = _locationService.GetAllLocations();
+            return View(locations);
+        }
+
+
+>>>>>>> Stashed changes
         // POST: Locations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,6 +84,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -116,7 +136,12 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Locations/Delete/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Delete(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Delete(int? id)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {

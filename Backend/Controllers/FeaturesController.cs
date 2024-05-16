@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +20,24 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features
+<<<<<<< Updated upstream
         public async Task<IActionResult> Index()
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Index()
+>>>>>>> Stashed changes
         {
             var tableContext = _context.Features.Include(f => f.Cars);
             return View(await tableContext.ToListAsync());
         }
 
         // GET: Features/Details/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Details(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Details(int? id)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {
@@ -45,6 +56,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId");
@@ -69,7 +81,12 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Edit/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Edit(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Edit(int? id)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {
@@ -122,7 +139,12 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Delete/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Delete(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Delete(int? id)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {

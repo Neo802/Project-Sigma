@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,12 +20,17 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities
+<<<<<<< Updated upstream
         public async Task<IActionResult> Index()
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult AdminLiabilities()
+>>>>>>> Stashed changes
         {
             var tableContext = _context.Liability.Include(l => l.Cars);
             return View(await tableContext.ToListAsync());
         }
-
+        [Authorize(Roles = "Administrator")]
         // GET: Liabilities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,6 +51,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId");
@@ -69,7 +76,12 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Edit/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Edit(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Edit(int? id)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {
@@ -122,7 +134,12 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Liabilities/Delete/5
+<<<<<<< Updated upstream
         public async Task<IActionResult> Delete(int? id)
+=======
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Delete(int? id)
+>>>>>>> Stashed changes
         {
             if (id == null)
             {
