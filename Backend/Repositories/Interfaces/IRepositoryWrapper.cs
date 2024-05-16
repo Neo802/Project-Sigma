@@ -8,6 +8,7 @@
         ILiabilitiesRepository LiabilitiesRepository { get; }
         IFeaturesRepository FeaturesRepository { get; }
         IExtraRepository ExtraRepository { get; }
+        IOrdersRepository OrdersRepository { get; }
         void Save();
     }
 }

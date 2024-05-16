@@ -13,6 +13,7 @@ namespace ProjectRunAway.Repositories
         private ILiabilitiesRepository? _liabilitiesRepository;
         private IFeaturesRepository? _featuresRepository;
         private IExtraRepository? _extraRepository;
+        private IOrdersRepository? _ordersRepository;
 
         public IAvailabilityRepository AvailabilityRepository
         {
@@ -87,6 +88,18 @@ namespace ProjectRunAway.Repositories
                 }
 
                 return _extraRepository;
+            }
+        }
+        public IOrdersRepository OrdersRepository
+        {
+            get
+            {
+                if (_ordersRepository == null)
+                {
+                    _ordersRepository = new OrdersRepository(_Context);
+                }
+
+                return _ordersRepository;
             }
         }
         public RepositoryWrapper(TableContext locationContext)
