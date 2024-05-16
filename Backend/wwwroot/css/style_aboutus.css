@@ -1,42 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
-
-/* Style for aboutus page*/
-
-.about-container{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  margin-top: 2rem;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
-.about-img img{
+
+.faq-section {
+  max-width: 600px;
+  margin: 170px auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.faq-question {
+  background-color: #00858a;
+  border: none;
   width: 100%;
-  padding-left: 5rem;
-}
-.about-text span{
-  font-weight: 500;
-  color: rgba(255, 0, 0, 0.456);
-  text-transform: uppercase;
-}
-.heading p,h1{
-  padding-top: 30px;
-  padding-bottom: 30px;
-  text-align: center;
-}
-.heading p{
-  font-size: 2rem;
-}
-#hide{
-  display: none;
-}
-.about-container .about-text .btn{
-  background-color: rgba(255, 0, 0, 0.456);
-  padding: 10px 8px;
-  border-radius: 0.7rem;
-  flex: 2 2 7rem;
-}
-.about-container .about-text .btn:hover{
-  background-color: red;
+  text-align: left;
+  padding: 15px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 12px;
 }
 
+.faq-question:focus {
+  outline: none;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  background-color: #fff;
+  padding: 0 15px;
+  opacity: 0;
+  transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
+}
+
+.faq-answer.open {
+  max-height: 500px; /* adjust as needed */
+  padding: 15px;
+  opacity: 1;
+}
