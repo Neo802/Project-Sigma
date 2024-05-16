@@ -36,10 +36,12 @@ namespace ProjectRunAway.Controllers
         {
             return View();
         }
+        
         public IActionResult ConfirmOrder()
         {
             return View();
         }
+        
         // GET: Extra/Details/5
         [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
