@@ -16,15 +16,50 @@ namespace ProjectRunAway.Controllers
         {
             _carsServices = carsServices;
         }
-        
-        public IActionResult GetCarDetails(int id)
+
+        /*public IActionResult GetCarDetails(int id)
         {
             var car = _carsServices.GetCarsById(id);  // Make sure you have a method to fetch car by ID
             if (car == null)
                 return NotFound();
 
             return Json(car);
+        }*/
+        public IActionResult GetCarDetails(int id)
+        {
+            var car = _carsServices.GetCarsById(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            var carDetails = new
+            {
+                description = car.Description,
+                gear = car.Features.FirstOrDefault()?.TypeSeats, // Adjust according to your properties
+                tankCapacity = car.Features.FirstOrDefault()?.CilindricalCapacity, // Adjust according to your properties
+                doors = car.Features.FirstOrDefault()?.Navigation, // Adjust according to your properties
+                ac = car.Features.FirstOrDefault()?.AC, // Adjust according to your properties
+                features = car.Features.Select(f => new
+                {
+                    f.AC,
+                    f.HeadtedSeats,
+                    f.VentilatedSeats,
+                    f.SteeringWheelHeating,
+                    f.MaterialOfTheSeats,
+                    f.Navigation,
+                    f.HorsePower,
+                    f.CilindricalCapacity,
+                    f.HeadLights,
+                    f.TypeSeats,
+                    f.VirtualCockpit,
+                    f.SunRoof
+                })
+            };
+
+            return Json(carDetails);
         }
+
         [Authorize(Roles = "Administrator")]
         public ActionResult AdminCars()
         {
@@ -138,7 +173,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
+        public IActionResult Create([Bind("CarsId,Manufacturer,Model,Description,Image,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
         {
             if (ModelState.IsValid)
             {
@@ -171,7 +206,7 @@ namespace ProjectRunAway.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("CarsId,Manufacturer,Model,Description,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
+        public IActionResult Edit(int id, [Bind("CarsId,Manufacturer,Model,Description,Image,Fuel,Seats,Gear,Type,Doors,PriceCar,TankCapacity")] Cars cars)
         {
             if (id != cars.CarsId)
             {
