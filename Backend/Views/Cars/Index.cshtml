@@ -82,8 +82,10 @@
 
                 <p class="description">
                     @item.Description
+                    
                 </p>
                 <button onclick="showCarDetails(@item.CarsId)" class="btn">Show More</button>
+                    <a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })"><button class="btn">Rent Now</button></a>
             </div>
         </article>
     }
@@ -92,7 +94,10 @@
     <!-- Modal Structure -->
     <div id="carDetailsModal" class="modal" style="display:none;">
         <div class="modal-content">
-            <span id="carDetails"></span>
+            <h2>Features:</h2>
+            
+            <ul class="unorderfeature" id="carFeatures"></ul>
+
             <button onclick="closeModal()" class="btn">Close</button>
         </div>
         <div class="modal-overlay" onclick="closeModal()"></div>
@@ -109,7 +114,11 @@
             align-items: center;
             justify-content: center;
         }
-
+        .unorderfeature{
+            list-style-type: circle;
+            margin-left: 21px;
+            font-size:18px;
+        }
         .modal-content {
             background: white;
             padding: 20px;

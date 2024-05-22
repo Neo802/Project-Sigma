@@ -2,65 +2,87 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectRunAway</title>
+    <link rel="stylesheet" href="~/css/style_login&create_Account.css" asp-append-version="true" />/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!--preloader-->
+    <!--will be implemented-->
+    <!--header-->
 
-<h1>@ViewData["Title"]</h1>
+    <header>
+        <video class="video-container" muted autoplay loop>
+            <source src="https://www.dropbox.com/scl/fi/pm3fkw7z95s8jqm01grk5/video_logare.mp4?rlkey=xp70g1sad2wh6hwmy7ulzrki0&dl=1" type="video/mp4" />
+        </video>
+    </header>
 
-<div class="row">
-    <div class="col-md-4">
+
+    <!--login-->
+    <div class="wrapper-cr-acc">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
+            <img src="https://www.dropbox.com/scl/fi/9v0f4t9dj02zy9sdbskro/RunAwayS.png?rlkey=vuqzo83yypktcekhgqosbmuo1&st=ci700b45&dl=1" class="logo" alt="Logo here" />
+            <h1>Create account</h1>
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
+            <div class="input-box">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
+
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
+            <div class="input-box">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
+
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
+            <div class="input-box">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button class="btn" id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+    @*  <div class="col-md-6 col-md-offset-2">
+    <section>
+    <h3>Use another service to register.</h3>
+    <hr />
+    @{
+    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+    {
+    <div>
+    <p>
+    There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+    about setting up this ASP.NET application to support logging in via external services</a>.
+    </p>
     </div>
-</div>
+    }
+    else
+    {
+    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+    <div>
+    <p>
+    @foreach (var provider in Model.ExternalLogins!)
+    {
+    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+    }
+    </p>
+    </div>
+    </form>
+    }
+    }
+    </section>
+    </div> *@
+    </div>
+    <script src="~/js/app_login_create_Account.js"></script>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

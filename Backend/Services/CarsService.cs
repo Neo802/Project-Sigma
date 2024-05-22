@@ -89,13 +89,18 @@ namespace ProjectRunAway.Services
         */
         public Cars GetCarsById(int id)
         {
-            var cars = _repositoryWrapper.CarsRepository.FindByCondition(cars => cars.CarsId == id).FirstOrDefault();
-            if (cars == null)
-            {
-                return null;
-            }
-            return cars; // Assuming you want to return the user if found
+            var car = _repositoryWrapper.CarsRepository
+         .FindByCondition(c => c.CarsId == id)
+         .FirstOrDefault();
 
+            if (car != null)
+            {
+                car.Features = _repositoryWrapper.FeaturesRepository
+                    .FindByCondition(f => f.CarsId == id)
+                    .ToList();
+            }
+
+            return car;
         }
         public IEnumerable<Cars> GetAllCars()
         {

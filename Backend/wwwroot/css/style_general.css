@@ -186,7 +186,7 @@ nav {
     height: 17rem;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1082px) {
     .nav-center {
         max-width: 1170px;
         margin: 0 auto;
@@ -225,7 +225,7 @@ nav {
 
         .social-icons a {
             margin: 0 0.5rem;
-            color: #00858a;
+            color: rgba(0,166,170);
             transition: all 0.3s linear;
         }
 

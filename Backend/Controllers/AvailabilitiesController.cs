@@ -130,6 +130,26 @@ namespace ProjectRunAway.Controllers
             ViewData["LocationsId"] = new SelectList(_context.Locations, "LocationsId", "LocationsId", availability.LocationsId);
             return View(availability);
         }
+        [HttpPost]
+        public IActionResult MarkCarAsBusy(int carId)
+        {
+            if (carId == 0)
+            {
+                // Gestionați cazul în care carId nu este valid
+                return RedirectToAction("Index");
+            }
+
+            var availability = _context.Availability.FirstOrDefault(a => a.CarsId == carId);
+            if (availability != null)
+            {
+                availability.BusyCar = "true"; // Setează valoarea string la "true"
+                _context.Update(availability);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ConfirmOrder","Extra");
+        }
+
+
 
         // GET: Availabilities/Delete/5
         [Authorize(Roles = "Administrator")]
