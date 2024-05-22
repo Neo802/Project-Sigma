@@ -135,7 +135,6 @@ namespace ProjectRunAway.Controllers
         {
             if (carId == 0)
             {
-               
                 return RedirectToAction("Index");
             }
 

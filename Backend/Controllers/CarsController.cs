@@ -17,7 +17,7 @@ namespace ProjectRunAway.Controllers
             _carsServices = carsServices;
         }
 
-        public IActionResult GetCarDetails(int id)
+        /*public IActionResult GetCarDetails(int id)
         {
             var car = _carsServices.GetCarsById(id);
             if (car == null)
@@ -25,6 +25,15 @@ namespace ProjectRunAway.Controllers
                 return NotFound();
             }
 
+            return Json(car);
+        }*/
+        public IActionResult GetCarDetails(int id)
+        {
+            var car = _carsServices.GetCarsById(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
             var carDetails = new
             {
                 description = car.Description,
