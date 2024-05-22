@@ -1,5 +1,5 @@
-﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -9,21 +9,91 @@
     }
 }
 
-<h1>Manage your account</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Your Account</title>
+    <link rel="stylesheet" href="~/css/style_extra.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
+        .heading {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            color: #333;
+        }
+
+            .heading h1 {
+                font-size: 36px;
+                margin-bottom: 10px;
+            }
+
+            .heading h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .content hr {
+                margin: 30px 0;
+            }
+
+        .nav-link.active {
+            font-weight: bold;
+            color: #008080;
+        }
+
+        .btn-custom {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .btn-custom:hover {
+                background-color: #006666; /* Darker teal */
+            }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h1>Manage Your Account</h1>
+        <h2>Change Your Account Settings</h2>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <partial name="_ManageNav" />
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+    @section Scripts {
+        @RenderSection("Scripts", required: false)
+    }
+</body>
+</html>

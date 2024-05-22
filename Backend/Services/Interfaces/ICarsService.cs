@@ -11,6 +11,10 @@ namespace ProjectRunAway.Services.Interfaces
         public List<Cars> EditExisting();
         IEnumerable<Cars> GetAllCars();
         IEnumerable<Cars> GetCarsByAvailabilityLocation(int locationId);
+        IEnumerable<Cars> GetCarsByAvailabilityLocationName(string locationName);
+        IEnumerable<Availability> GetAvailabilities();
+        Availability GetAvailabilityByCarId(int carId);
+
         //public void Save();
     }
 }

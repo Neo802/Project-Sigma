@@ -1,0 +1,183 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Text.RegularExpressions
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "DataCustomer";
+}
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style_extra.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .heading {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            color: #333;
+        }
+        .heading p {
+            font-size: 18px;
+            margin: 0;
+        }
+        .heading h2 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .btn {
+            background-color: #008080; /* Teal color to match the image */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            background-color: #006666; /* Darker teal on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <!-- Preloader will be implemented here! -->
+
+    <!-- Extra Features section -->
+    <div class="heading">
+        <p>Are you ready to get your car?</p>
+        <h2>Confirm the order and the car is yours</h2>
+        <p class="paragraph">RunAway!</p>
+    </div>
+
+    <div class="form-container">
+      <a href="@Url.Action("ConfirmOrder", "Extra")" class="btn">Confirm your rent</a>
+    </div>
+</body>
+</html>
+
+}
+else
+{
+    <head>
+        <meta charset="UTF-8">
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/css/style_extra.css" />
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            .heading {
+                text-align: center;
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+                color: #333;
+            }
+
+                .heading p {
+                    font-size: 18px;
+                    margin: 0;
+                }
+
+                .heading h2 {
+                    margin: 10px 0;
+                    font-size: 24px;
+                }
+
+            .form-container {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                background: white;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+                .form-container label {
+                    display: block;
+                    margin-bottom: 8px;
+                    font-size: 16px;
+                }
+
+                .form-container input[type="text"],
+                .form-container input[type="email"] {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .form-container .btn {
+                    background-color: #008080; /* Teal color to match the image */
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 10px;
+                    text-decoration: none;
+                    font-size: 16px;
+                    cursor: pointer;
+                    display: block;
+                    width: 92%;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
+                }
+
+                    .form-container .btn:hover {
+                        background-color: #006666; /* Darker teal on hover */
+                    }
+        </style>
+    </head>
+    <body>
+        <!-- Preloader -->
+        <!-- Preloader will be implemented here! -->
+        <!-- Contact Information section -->
+        <div class="heading">
+            <p>We need your contact information</p>
+            <h2>Please provide your phone number and email address</h2>
+            <p class="paragraph">We will contact you as soon as possible!</p>
+        </div>
+
+        <div class="form-container">
+            <form action="@Url.Action("ConfirmOrder", "Extra")" method="post">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit" class="btn">Confirm your rent</button>
+            </form>
+        </div>
+    </body>
+}

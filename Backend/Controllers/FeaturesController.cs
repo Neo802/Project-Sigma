@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,8 @@ namespace ProjectRunAway.Controllers
             _featuresService = featuresService;
         }
         // GET: Features
+
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             var features = _featuresService.GetAllFeatures();
@@ -26,6 +29,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Details/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -43,6 +47,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         { 
             return View();
@@ -64,6 +69,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Edit/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -102,6 +108,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Delete/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null)

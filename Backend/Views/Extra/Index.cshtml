@@ -1,35 +1,355 @@
-﻿@model IEnumerable<ProjectRunAway.Models.Extra>
-
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<ProjectRunAway.Models.Extra>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Index";
+    var firstItem = Model.FirstOrDefault(); // Obține primul element din colecție
+    var carsId = firstItem != null ? firstItem.CarsId : 0; // Obține CarsId, asigurându-te că nu este null
 }
-<link rel="stylesheet" href="~/css/style_extra.css" />
-<body>
-    <!--preloader-->
-    <!-- Preloader will be implemented here! -->
+@if (SignInManager.IsSignedIn(User))
+{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style_extra.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        .heading {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            color: #333;
+        }
+
+            .heading p {
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .heading h2 {
+                margin: 10px 0;
+                font-size: 24px;
+            }
+
+        .list {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+            .list li {
+                background: white;
+                margin: 10px 0;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .list label {
+                font-size: 16px;
+                flex-grow: 1;
+                margin-right: 20px;
+            }
+
+            .list input[type="checkbox"] {
+                transform: scale(1.5);
+                margin-left: 20px; /* More separation between words and checkbox */
+            }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+            .form-group label {
+                font-size: 16px;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            .form-group input {
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 300px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+        .btn {
+            background-color: #008080; /* Teal color to match the image */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .btn:hover {
+                background-color: #006666; /* Darker teal on hover */
+            }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <!-- Preloader will be implemented here! -->
     <!-- List of assurance section -->
     <div class="heading">
-        <span><p>Do you want some extra features?</p></span>
+        <p>Do you want some extra features?</p>
         <h2>We have for you some extra features for this car</h2>
         <p class="paragraph">Choose your extra features!</p>
     </div>
 
-
-
-    <ul class = "list">
-        @foreach(var item in Model)
+    <ul class="list">
+        @foreach (var item in Model)
         {
-            <li class="item">@Html.DisplayFor(modelItem => item.ChildSeat)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.TypeOfTires)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.SkiRack)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.WifiHotspot)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.SnowChains)</li>
-            <li class="item">@Html.DisplayFor(modelItem => item.RoadsideProtection)</li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.ChildSeat)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.TypeOfTires)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.SkiRack)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.WifiHotspot)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.SnowChains)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.RoadsideProtection)
+                </label>
+                <input type="checkbox" />
+            </li>
         }
     </ul>
 
-
-
+    <div class="button-container">
+        <form action="@Url.Action("MarkCarAsBusy", "Availabilities")" method="post">
+           
+            <input type="hidden" name="carId" value="@carsId" />
+            <button type="submit" class="btn">Confirm order</button>
+        </form>
+    </div>
 </body>
+    </html>
+}else
+{
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style_extra.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        .heading {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            color: #333;
+        }
+
+            .heading p {
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .heading h2 {
+                margin: 10px 0;
+                font-size: 24px;
+            }
+
+        .list {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+            .list li {
+                background: white;
+                margin: 10px 0;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .list label {
+                font-size: 16px;
+                flex-grow: 1;
+                margin-right: 20px;
+            }
+
+            .list input[type="checkbox"] {
+                transform: scale(1.5);
+                margin-left: 20px; /* More separation between words and checkbox */
+            }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+            .form-group label {
+                font-size: 16px;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            .form-group input {
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 300px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+        .btn {
+            background-color: #008080; /* Teal color to match the image */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .btn:hover {
+                background-color: #006666; /* Darker teal on hover */
+            }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <!-- Preloader will be implemented here! -->
+    <!-- List of assurance section -->
+    <div class="heading">
+        <p>Do you want some extra features?</p>
+        <h2>We have for you some extra features for this car</h2>
+        <p class="paragraph">Choose your extra features!</p>
+    </div>
+
+    <ul class="list">
+        @foreach (var item in Model)
+        {
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.ChildSeat)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.TypeOfTires)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.SkiRack)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.WifiHotspot)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.SnowChains)
+                </label>
+                <input type="checkbox" />
+            </li>
+            <li>
+                <label>
+                    @Html.DisplayFor(modelItem => item.RoadsideProtection)
+                </label>
+                <input type="checkbox" />
+            </li>
+        }
+    </ul>
+
+    <div class="button-container">
+        <form action="@Url.Action("MarkCarAsBusy", "Availabilities")" method="post">
+            <h3>We need also your phone number and email address</h3>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <input type="hidden" name="carId" value="@carsId" />
+
+            <button type="submit" class="btn">Confirm order</button>
+        </form>
+    </div>
+</body>
+    </html>
+}

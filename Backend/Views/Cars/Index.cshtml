@@ -56,6 +56,7 @@
 
                 <button type="submit" class="btn-primary" name="sortType" value=1>Show by Increasing</button>
                 <button type="submit" class="btn-primary" name="sortType" value=2>Show by Decreasing</button>
+
                 <button type="submit" class="btn-primary">Filter</button>
             </ul>
         </form>
@@ -64,6 +65,7 @@
     <div class="section-center">
     @foreach (var item in Model)
     {
+
         <article class="menu-item">
                 <a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })"><img src="@Html.DisplayFor(modelitem=>item.Image)" alt="Alternate Text" class="photo" alt="Image of @item.Model" /></a>
             <div class="item-info">
@@ -77,10 +79,13 @@
                     <i class="fa-solid fa-gas-pump"></i> @item.Fuel
                     <i class="fa-solid fa-euro-sign"></i> @item.PriceCar/day
                 </h4>
+
                 <p class="description">
                     @item.Description
+                    
                 </p>
-                <button onclick="showCarDetails(@item.CarsId)">Show More</button>
+                <button onclick="showCarDetails(@item.CarsId)" class="btn">Show More</button>
+                    <a href="@Url.Action("", "Liabilities", new { carsId = item.CarsId })"><button class="btn">Rent Now</button></a>
             </div>
         </article>
     }
@@ -89,8 +94,11 @@
     <!-- Modal Structure -->
     <div id="carDetailsModal" class="modal" style="display:none;">
         <div class="modal-content">
-            <span id="carDetails"></span>
-            <button onclick="closeModal()">Close</button>
+            <h2>Features:</h2>
+            
+            <ul class="unorderfeature" id="carFeatures"></ul>
+
+            <button onclick="closeModal()" class="btn">Close</button>
         </div>
         <div class="modal-overlay" onclick="closeModal()"></div>
     </div>
@@ -106,7 +114,11 @@
             align-items: center;
             justify-content: center;
         }
-
+        .unorderfeature{
+            list-style-type: circle;
+            margin-left: 21px;
+            font-size:18px;
+        }
         .modal-content {
             background: white;
             padding: 20px;
