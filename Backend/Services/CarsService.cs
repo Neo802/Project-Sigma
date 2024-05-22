@@ -60,14 +60,31 @@ namespace ProjectRunAway.Services
         */
         public Cars GetCarsById(int id)
         {
+<<<<<<< Updated upstream
             var cars = _repositoryWrapper.CarsRepository.FindByCondition(cars => cars.CarsId == id).FirstOrDefault();
             if (cars == null)
+=======
+            var car = _repositoryWrapper.CarsRepository
+                .FindByCondition(c => c.CarsId == id)
+                .FirstOrDefault();
+
+            if (car == null)
+>>>>>>> Stashed changes
             {
                 return null;
             }
             return cars; // Assuming you want to return the user if found
 
+<<<<<<< Updated upstream
+=======
+            car.Features = _repositoryWrapper.FeaturesRepository
+                .FindByCondition(f => f.CarsId == id)
+                .ToList();
+
+            return car;
+>>>>>>> Stashed changes
         }
+
         public IEnumerable<Cars> GetAllCars()
         {
             return _repositoryWrapper.CarsRepository.FindAll().ToList();
