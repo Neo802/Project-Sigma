@@ -34,9 +34,10 @@ namespace ProjectRunAway.Controllers
         }
         public IActionResult DataCustomer()
         {
+
             return View();
         }
-        
+
         public IActionResult ConfirmOrder([Bind("OrderId, UserId, CarsId")] Orders orders)
         {
             if (ModelState.IsValid)
@@ -46,7 +47,7 @@ namespace ProjectRunAway.Controllers
             }
             return View();
         }
-        
+
         // GET: Extra/Details/5
         [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
