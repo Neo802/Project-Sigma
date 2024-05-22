@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Availabilities
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             var tableContext = _context.Availability.Include(a => a.Cars).Include(a => a.Locations);
@@ -26,6 +28,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Availabilities/Details/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,6 +49,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Availabilities/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             ViewData["CarsId"] = new SelectList(_context.Cars, "CarsId", "CarsId");
@@ -72,6 +76,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Availabilities/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -125,8 +130,28 @@ namespace ProjectRunAway.Controllers
             ViewData["LocationsId"] = new SelectList(_context.Locations, "LocationsId", "LocationsId", availability.LocationsId);
             return View(availability);
         }
+        [HttpPost]
+        public IActionResult MarkCarAsBusy(int carId)
+        {
+            if (carId == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var availability = _context.Availability.FirstOrDefault(a => a.CarsId == carId);
+            if (availability != null)
+            {
+                availability.BusyCar = "true"; 
+                _context.Update(availability);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ConfirmOrder","Extra");
+        }
+
+
 
         // GET: Availabilities/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

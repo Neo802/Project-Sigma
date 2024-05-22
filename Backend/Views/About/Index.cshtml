@@ -1,6 +1,5 @@
 @{
     ViewData["Title"] = "About";
-    Layout = null;
 }
 
 <html lang="en">
@@ -12,34 +11,51 @@
     <!-- styles -->
     <link rel="stylesheet" href="~/css/style_aboutus.css">
 </head>
-<body>
-    <!--preloader-->
-    <!-- Preloader will be implemented here! -->
-    
-  <!-- Abous us section -->
-    <section class="about" id="about">
-      <div class="heading">
-        <span><p>About us</p></span>
-        <h1>Best Customer Experience</h1>
-      </div>
-      <div class="about-container">
-        <div class="about-img">
-          <img src="images/logo.png" alt="can not access logo.png" class="photo">
+
+
+    <div class="aboutus"> <img src="https://www.dropbox.com/scl/fi/9v0f4t9dj02zy9sdbskro/RunAwayS.png?rlkey=vuqzo83yypktcekhgqosbmuo1&st=ci700b45&dl=1" class="logoabout" alt="Logo here" />
+    <div class="aboutusdescription">Welcome to RunAway, where innovation meets passion. We are a dynamic team dedicated to providing cutting-edge solutions in the world of automotive services. Our mission is to revolutionize the way people interact with their vehicles by offering seamless, user-friendly experiences. With a focus on quality and customer satisfaction, we strive to exceed expectations in every project we undertake. Our team comprises industry experts with a wealth of knowledge and a shared commitment to excellence. At RunAway, we believe in building long-lasting relationships with our clients through trust, transparency, and exceptional service. Join us on our journey to drive the future of automotive technology.</div>
+    </div>
+    <div class="faq-section">
+        <h1>FAQ Section</h1>
+        <div class="faq-item">
+            <button class="faq-question">What is your return policy?</button>
+            <div class="faq-answer">
+                <p>We accept returns within 30 days of purchase. Items must be in their original condition. To initiate a return, log into your account and select 'Request Return.'</p>
+            </div>
         </div>
-        <div class="about-text">
-          <span>About us</span>
-          <p>&nbsp&nbsp&nbspRunAway Car Rentals is the premier destination for those seeking reliable and convenient rental vehicles. Our comprehensive fleet boasts a wide array of cars, from compact and fuel-efficient models to spacious SUVs and luxury vehicles. Whether you're planning a quick weekend getaway, a family vacation, or a business trip, we have the perfect vehicle to suit your needs. 
-          </p>
-          <p id="hide">&nbsp&nbsp&nbspAt RunAway, we prioritize customer satisfaction above all else. Our dedicated team is committed to providing exceptional service, ensuring a seamless rental experience from start to finish. We understand that every journey is unique, which is why we offer personalized assistance to help you select the ideal vehicle for your specific requirements.
-                      <br>
-                      &nbsp&nbsp&nbspConvenience is key at RunAway Car Rentals. With multiple locations conveniently situated throughout the area, picking up and returning your rental vehicle is hassle-free. Our online booking platform allows for easy reservation management, giving you the flexibility to plan your trip on your terms.
-          </p>
-          <button class="btn" id="switch-text" onclick="showHide()">Read more</button>
+        @* <div class="faq-item">
+            <button class="faq-question">How can I track my order?</button>
+            <div class="faq-answer">
+                <p>You can track your order by logging into your account and selecting 'Order History.' Click on the order you wish to track to see the current status and tracking number.</p>
+            </div>
+        </div> *@
+        <div class="faq-item">
+            <button class="faq-question">How do I reset my password?</button>
+            <div class="faq-answer">
+                <p>To reset your password, click on 'Forgot Password' at the login page, and follow the instructions to receive a password reset link via email.</p>
+            </div>
         </div>
-      </div>
-    </section>
+        <div class="faq-item">
+            <button class="faq-question">What payment methods do you accept?</button>
+            <div class="faq-answer">
+                <p>We accept Visa, MasterCard, American Express, PayPal, and Apple Pay.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">How do I contact customer service?</button>
+            <div class="faq-answer">
+                <p>By calling our support hotline at 1-800-123-4567.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">Where are you located?</button>
+            <div class="faq-answer">
+                <p>Our headquarters are located in Craiova, CA. We also have offices in Bucuresti and Cluj-Napoca.</p>
+            </div>
+        </div>
+    </div>
     <!-- javascript -->
-    <script src="~/js/app_general.js"></script>
     <script src="~/js/app_aboutus.js"></script>
-  </body>
+
 </html>

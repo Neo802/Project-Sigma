@@ -183,10 +183,10 @@ nav {
 }
 
 .show-links {
-    height: 16rem;
+    height: 17rem;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1082px) {
     .nav-center {
         max-width: 1170px;
         margin: 0 auto;
@@ -225,11 +225,24 @@ nav {
 
         .social-icons a {
             margin: 0 0.5rem;
-            color: #00858a;
+            color: rgba(0,166,170);
             transition: all 0.3s linear;
         }
 
             .social-icons a:hover {
                 color: rgba(0,166,170);
             }
+}
+.btn {
+    background-color: #008080; /* Teal color to match the image */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
 }

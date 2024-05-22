@@ -19,20 +19,22 @@
             <h1>Do you <span>need a car</span>?<br> <span>Rent a car</span></h1>
         </div>
         <div class="form-container">
-             <form asp-action="Index" method="get">
+
+
+            <form asp-controller="Cars" asp-action="Index" method="get">
                 <div class="input-box">
-                    <span><h3>Location</h3></span>
-                    <input type="text" name="searchText" class="form-control" placeholder="Search Places...">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" class="form-control" placeholder="City name here..." required  />
                 </div>
                 <div class="input-box">
-                    <span><h3>Pick up Date</h3></span>
-                    <input type="date" name="" id="">
+                    <label for="pickupDate">Pickup Date</label>
+                    <input type="date" id="pickupDate" name="pickupDate" class="form-control" required />
                 </div>
                 <div class="input-box">
-                    <span><h3>Return Date</h3></span>
-                    <input type="date" name="" id="">
+                    <label for="returnDate">Return Date</label>
+                    <input type="date" id="returnDate" name="returnDate" class="form-control" required />
                 </div>
-                <input type="submit" name="" id="" class="btn">
+                <button type="submit" class="btn btn-primary">Search Cars</button>
             </form>
         </div>
     </section>

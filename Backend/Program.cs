@@ -25,6 +25,8 @@ builder.Services.AddScoped<IFeaturesService, FeaturesService>();
 builder.Services.AddScoped<IExtraRepository, ExtraRepository>();
 builder.Services.AddScoped<IExtraService, ExtraService>();
 builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

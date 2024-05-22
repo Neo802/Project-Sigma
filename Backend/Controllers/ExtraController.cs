@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,12 +26,30 @@ namespace ProjectRunAway.Controllers
 
             return View(query);
         }
+        [Authorize(Roles = "Administrator")]
         public ActionResult AdminExtra()
         {
             var locations = _extraService.GetAllExtras();
             return View(locations);
         }
+        public IActionResult DataCustomer()
+        {
+
+            return View();
+        }
+
+        public IActionResult ConfirmOrder([Bind("OrderId, UserId, CarsId")] Orders orders)
+        {
+            if (ModelState.IsValid)
+            {
+                _extraService.AddOrder(orders);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
         // GET: Extra/Details/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -48,6 +67,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Extra/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -69,6 +89,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Edit/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,6 +128,7 @@ namespace ProjectRunAway.Controllers
         }
 
         // GET: Features/Delete/5
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
