@@ -135,14 +135,14 @@ namespace ProjectRunAway.Controllers
         {
             if (carId == 0)
             {
-                // Gestionați cazul în care carId nu este valid
+               
                 return RedirectToAction("Index");
             }
 
             var availability = _context.Availability.FirstOrDefault(a => a.CarsId == carId);
             if (availability != null)
             {
-                availability.BusyCar = "true"; // Setează valoarea string la "true"
+                availability.BusyCar = "true"; 
                 _context.Update(availability);
                 _context.SaveChanges();
             }

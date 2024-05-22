@@ -17,14 +17,6 @@ namespace ProjectRunAway.Controllers
             _carsServices = carsServices;
         }
 
-        /*public IActionResult GetCarDetails(int id)
-        {
-            var car = _carsServices.GetCarsById(id);  // Make sure you have a method to fetch car by ID
-            if (car == null)
-                return NotFound();
-
-            return Json(car);
-        }*/
         public IActionResult GetCarDetails(int id)
         {
             var car = _carsServices.GetCarsById(id);
@@ -91,7 +83,6 @@ namespace ProjectRunAway.Controllers
                 query = query.Where(car => availableCarIds.Contains(car.CarsId));
             }
 
-            // Filtrarea mașinilor care nu sunt ocupate
             var busyCarIds = _carsServices.GetAvailabilities()
                 .Where(a => a.BusyCar == "true")
                 .Select(a => a.CarsId)
