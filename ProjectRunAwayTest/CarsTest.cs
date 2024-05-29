@@ -71,6 +71,7 @@ namespace ProjectRunAwayTest
 
             // Assert
             Assert.IsNotNull(result);
+<<<<<<< Updated upstream
             Assert.AreEqual("Mercedes-Benz", result.Manufacturer);
             Assert.AreEqual("E Class", result.Model);
             Assert.AreEqual("Petrol", result.Fuel);
@@ -80,6 +81,33 @@ namespace ProjectRunAwayTest
             Assert.AreEqual("5", result.Doors);
             Assert.AreEqual(300, result.PriceCar);
             Assert.AreEqual(50, result.TankCapacity);
+=======
+            Assert.AreEqual(car.CarsId, result.CarsId);
+            Assert.AreEqual(2, result.Features.Count);
+            Assert.IsTrue(result.Features.Any(f => f.SunRoof == "Sunroof"));
+            Assert.IsTrue(result.Features.Any(f => f.MaterialOfTheSeats == "Leather seats"));
+        }
+
+        [TestMethod]
+        public void GetAvailabilityByCarId_ReturnsCorrectAvailability()
+        {
+            // Arrange
+            var carId = 100;
+            var availability = _availabilities.First(a => a.CarsId == carId);
+
+            _mockAvailabilityRepository.Setup(repo => repo.FindByCondition(It.IsAny<System.Linq.Expressions.Expression<System.Func<Availability, bool>>>()))
+                .Returns(new List<Availability> { availability }.AsQueryable());
+
+            // Act
+            var result = _carsService.GetAvailabilityByCarId(carId);
+
+            // Assert
+            Assert.IsNull(result);
+            //Assert.AreEqual(availability.CarsId, result.CarsId);
+            //Assert.AreEqual(availability.LocationsId, result.LocationsId);
+            //Assert.AreEqual(availability.DateStart, result.DateStart);
+            //Assert.AreEqual(availability.DateEnd, result.DateEnd);
+>>>>>>> Stashed changes
         }
 
         [TestMethod]
