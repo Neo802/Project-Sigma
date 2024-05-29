@@ -116,7 +116,7 @@ namespace ProjectRunAway.Controllers
 
             if (priceMin != 0)
             {
-                query = query.Where(c => c.PriceCar >= Math.Min(priceMax, priceMin));
+                query = query.Where(c => c.PriceCar >= Math.Min(priceMin, priceMax));
             }
 
             if (priceMax != 0)

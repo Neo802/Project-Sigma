@@ -50,8 +50,13 @@ namespace ProjectRunAwayTest
         [TestMethod]
         public void GetLocationById_ReturnsCorrectLocation()
         {
+            // Arrange
             _mockWrapper.Setup(x => x.LocationRepository.GetLocationById(1)).Returns(_locations[0]);
+
+            // Act
             var result = _locationService.GetLocationById(1);
+
+            // Assert
             Assert.AreEqual("Craiova", result.City);
             Assert.AreEqual(1, result.CarsAvailable);
             Assert.AreEqual("https://xplorer.ro/wp-content/uploads/2023/10/TOP-23-obiective-turistice-Craiova-768x514.webp", result.Image);

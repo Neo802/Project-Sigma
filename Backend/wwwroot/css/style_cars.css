@@ -1,4 +1,6 @@
-﻿.select-menu {
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+.select-menu {
     width: 300px;
     margin: 50px auto 50px auto;
 
@@ -114,9 +116,9 @@ button {
 .section-center {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
     gap: 20px;
-    padding: 5px; 
+    padding: 5px;
 
 }
 
@@ -167,7 +169,7 @@ button {
         border-radius: 40px;
         width: 330px;
         height: 29px;
-        margin: 14px 5px 5px 5px;
+        margin: 5px 5px 5px 5px;
     }
     .menu-item {
         grid-template-columns: repeat(2, 1fr);
@@ -200,13 +202,13 @@ button {
 
 @media screen and (min-width: 1200px) {
     .select-menu {
-        width: 1200px;
+        width: 1100px;
         margin: 50px auto 50px auto;
     }
     .btn-primary {
         border: 2px solid black;
         border-radius: 40px;
-        width: 150px;
+        width: 250px;
         height: 40px;
         margin: 5px 5px 5px 5px;
     }
@@ -221,11 +223,12 @@ button {
         padding: 5px 5px 5px 5px;
         border: 2px solid black;
         border-radius: 40px;
-        width: 153px;
+        width: 250px;
+        height: 40px;
     }
     .select-menu.active .options {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
     .photo {
         height: auto;

@@ -21,7 +21,7 @@
     <div class="select-menu">
         <form asp-action="Index" method="get">
             <div class="select-btn">
-                <span class="sBtn-text">Filter & Sort Options</span>
+                <span class="sBtn-text">Filter & Sort Options For All Cars In  RunAway</span>
                 <i class="bx bx-chevron-down"></i>
             </div>
 
@@ -29,7 +29,7 @@
                 <li class="option">
                     <input type="text" name="searchText" class="form-control" placeholder="Type make or model...">
                 </li>
-                <li class="option">
+                @* <li class="option">
                     <select name="carMake" class="form-control">
                         <option value="">All Makes</option>
                         @foreach (var make in Model.Select(c => c.Manufacturer).Distinct())
@@ -46,14 +46,13 @@
                             <option value="@models">@models</option>
                         }
                     </select>
-                </li>
+                </li> *@
                 <!-- Additional Filters -->
                 <li class="option"><input type="text" name="priceMin" class="form-control" placeholder="Price min..."></li>
                 <li class="option"><input type="text" name="priceMax" class="form-control" placeholder="Price max..."></li>
                 <li class="option"><input type="text" name="fuelType" class="form-control" placeholder="Fuel type..."></li>
                 <li class="option"><input type="text" name="bodyType" class="form-control" placeholder="Body type..."></li>
-                <li class="option"><input type="text" name="seatingCapacity" class="form-control" placeholder="Seating..."></li>
-
+              @*   <li class="option"><input type="text" name="seatingCapacity" class="form-control" placeholder="Seating..."></li> *@
                 <button type="submit" class="btn-primary" name="sortType" value=1>Show by Increasing</button>
                 <button type="submit" class="btn-primary" name="sortType" value=2>Show by Decreasing</button>
 
