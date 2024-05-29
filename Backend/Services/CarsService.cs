@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProjectRunAway.Models;
 using ProjectRunAway.Repositories.Interfaces;
 using ProjectRunAway.Services.Interfaces;
@@ -90,18 +90,21 @@ namespace ProjectRunAway.Services
         public Cars GetCarsById(int id)
         {
             var car = _repositoryWrapper.CarsRepository
-         .FindByCondition(c => c.CarsId == id)
-         .FirstOrDefault();
+                .FindByCondition(c => c.CarsId == id)
+                .FirstOrDefault();
 
-            if (car != null)
+            if (car == null)
             {
-                car.Features = _repositoryWrapper.FeaturesRepository
-                    .FindByCondition(f => f.CarsId == id)
-                    .ToList();
+                return null;
             }
+
+            car.Features = _repositoryWrapper.FeaturesRepository
+                .FindByCondition(f => f.CarsId == id)
+                .ToList();
 
             return car;
         }
+
         public IEnumerable<Cars> GetAllCars()
         {
             return _repositoryWrapper.CarsRepository.FindAll().ToList();
